@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <TargetFramework>net5.0-windows10.0.19041</TargetFramework>
+    <Authors>Wayne Venables</Authors>
+    <Company>Codaris</Company>
+    <Product>Under Desk Bike</Product>
+    <Copyright>Copyright (c) 2021 Wayne Venables</Copyright>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <ApplicationIcon>Resources\trayicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(SolutionDir)StyleCopAnalyzers.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="trayicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\trayicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf.NetCore" Version="1.0.18" />
+    <PackageReference Include="Jot" Version="2.1.8" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.8.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.333">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Codaris\Codaris.Common\Codaris.Common.csproj" />
+    <ProjectReference Include="..\Codaris\Codaris.Wpf\Codaris.Wpf.csproj" />
+    <ProjectReference Include="..\UnderDeskBike.Data\UnderDeskBike.Data.csproj" />
+    <ProjectReference Include="..\UnderDeskBike.Device\UnderDeskBike.Device.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

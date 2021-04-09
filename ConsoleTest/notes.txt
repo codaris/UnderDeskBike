@@ -1,0 +1,44 @@
+﻿The start connection packet
+---------------------------
+
+Sends		f9 d0 00 c9
+Receives	f9 e0 00 d9
+
+This must be the first packet sent to the bike.  Once you send this packet you must continue to send packets on a regular interval. 
+
+
+
+Sends:		f9 d1 05 02 00 00 00 00 d1 
+Receives:	f9 e1 10 07 00 00 00 00 00 00 02 00 03 37 00 00 2a
+Receives:	f9 e2 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 eb
+
+
+Sends:		f9 d3 0d 01 00 00 2c 00 00 3c 00 a0 00 00 00 00 e2 00 00 00
+Receives:	f9 e3 01 00 dd
+Receives:	f9 e3 0c 00 00 00 00 00 00 00 00 00 00 00 00 e8
+
+Sends:		f9 d4 0f 02 00 00 00 00 00 00 00 00 00 00 00 00 1f 0f 0c 00
+Receives:	f9 e4 02 00 00 df
+
+
+The start workout packet
+------------------------
+
+Sends:		f9 d5 0d 01 00 00 00 00 00 00 00 00 00 00 00 00 dc 00 00 00
+Receives:	f9 e5 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 ef
+Receives:	f9 e6 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ef
+Receives:	f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
+
+The continue workout packet
+---------------------------
+
+Sends:		f9 d5 0d 00 00 00 00 00 00 00 00 00 00 00 00 00 db 00 00 00
+Receives:	f9 e5 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 ef
+Receives:	f9 e6 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ef
+Receives:	f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
+
+
+Receives:	f9 e5 10 00 09 00 03 00 07 00 00 00 99 00 00 53 00 00 01 ee
+Receives:   f9 e6 10 00 00 00 00 00 06 00 00 00 00 00 00 00 00 00 2f 24
+Receives:	f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
+

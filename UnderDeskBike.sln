@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnderDeskBike", "UnderDeskBike\UnderDeskBike.csproj", "{8A61F6C3-0711-4BCD-B945-8220DB972C13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{8832BD37-5A28-43B5-B8A5-85540ACF99A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnderDeskBike.Device", "UnderDeskBike.Device\UnderDeskBike.Device.csproj", "{1A96B280-A2FB-4F48-9ECC-A2DB90C88A6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnderDeskBike.Data", "UnderDeskBike.Data\UnderDeskBike.Data.csproj", "{A502BCBC-D6E5-4AD8-82F1-32BC34A91132}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codaris.Common", "Codaris\Codaris.Common\Codaris.Common.csproj", "{7290DAEA-70C7-47C9-B589-1D27C7DF1CE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codaris.Wpf", "Codaris\Codaris.Wpf\Codaris.Wpf.csproj", "{05BDB27F-0D63-4662-A71C-D0F4E672671D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EAE90979-2865-43F2-B168-A4A17FAB6294}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		StyleCopAnalyzers.ruleset = StyleCopAnalyzers.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentation", "Documentation\Documentation.csproj", "{1263176F-A88D-46B8-979D-585A208D419D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A61F6C3-0711-4BCD-B945-8220DB972C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A61F6C3-0711-4BCD-B945-8220DB972C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A61F6C3-0711-4BCD-B945-8220DB972C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A61F6C3-0711-4BCD-B945-8220DB972C13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8832BD37-5A28-43B5-B8A5-85540ACF99A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8832BD37-5A28-43B5-B8A5-85540ACF99A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8832BD37-5A28-43B5-B8A5-85540ACF99A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8832BD37-5A28-43B5-B8A5-85540ACF99A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A96B280-A2FB-4F48-9ECC-A2DB90C88A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A96B280-A2FB-4F48-9ECC-A2DB90C88A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A96B280-A2FB-4F48-9ECC-A2DB90C88A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A96B280-A2FB-4F48-9ECC-A2DB90C88A6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A502BCBC-D6E5-4AD8-82F1-32BC34A91132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A502BCBC-D6E5-4AD8-82F1-32BC34A91132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A502BCBC-D6E5-4AD8-82F1-32BC34A91132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A502BCBC-D6E5-4AD8-82F1-32BC34A91132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7290DAEA-70C7-47C9-B589-1D27C7DF1CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7290DAEA-70C7-47C9-B589-1D27C7DF1CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7290DAEA-70C7-47C9-B589-1D27C7DF1CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7290DAEA-70C7-47C9-B589-1D27C7DF1CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05BDB27F-0D63-4662-A71C-D0F4E672671D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05BDB27F-0D63-4662-A71C-D0F4E672671D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05BDB27F-0D63-4662-A71C-D0F4E672671D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05BDB27F-0D63-4662-A71C-D0F4E672671D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1263176F-A88D-46B8-979D-585A208D419D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1263176F-A88D-46B8-979D-585A208D419D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1263176F-A88D-46B8-979D-585A208D419D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1263176F-A88D-46B8-979D-585A208D419D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {600B67A0-CB37-4072-BC81-795E246DCFA0}
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

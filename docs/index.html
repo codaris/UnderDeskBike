@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Hacking a $200 Under Desk Exercise Bike </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Hacking a $200 Under Desk Exercise Bike ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html" style="color: white;">
+                  Under Desk Bike
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container-fluid hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container-fluid body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container-fluid body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="" style="max-width: 992px">
+<h1 id="hacking-a-200-under-desk-exercise-bike">Hacking a $200 Under Desk Exercise Bike</h1>
+
+<p><img src="images/header.png" alt=""></p>
+<p>Due to COVID, I haven't been getting my usual amount of exercise this year.  To help with that, I decided to take a chance and order an under desk exercise bike to get some more cardio.  The bike I bought is decent: good tension, doesn't move around, is very quiet, and has Bluetooth connectivity for tracking workouts.</p>
+<p>If you're thinking of getting one of these under desk bikes I wouldn't automatically recommend it.  If your desk is normal sized you will bump your knees on it.  But my desk is designed to be used with a keyboard tray and I hate keyboard trays.  So instead my keyboard is on the top of the desk, my chair is raised up, and I use a footrest.  All this means that my desk is actually the perfect height for peddling.</p>
+<p>Bluetooth connectivity is important to me; being able to see and record speed and distance is a big motivator.  For connectivity there is unsurprisingly a phone app.  It's not a good app.  It feels unpolished and gets mediocre reviews.  And, of course, it also requires a signup and tries to upsell you on a subscription for classes.  I can ignore all that.  But, sitting at my workstation, I don't want to take out my phone and go through 5 steps every time I want to workout.  Nor do I want to keep my phone on and propped up on my desk for long periods of time.  Lastly, I very much did not want all my workout data locked away in this app.</p>
+<p>The solution was obvious -- build my own desktop app!</p>
+<h2 id="the-project">The Project</h2>
+<p>I was inspired by this article: <a href="https://ptx2.net/posts/unbricking-a-bike-with-a-raspberry-pi/">Unbricking a $2,000 Bike With a $10 Raspberry Pi</a>.  I figured my under desk bike probably worked in a similar way and if I could connect to it from my desktop I could write my own application.</p>
+<h4 id="objectives">Objectives</h4>
+<ul>
+<li>Display, in real time, the workout data in a small window on the desktop.</li>
+<li>Record the workout data to a SQLite database for analysis, goal setting, and motivation.</li>
+<li>If possible, have the app start and stop automatically whenever I start peddling.</li>
+</ul>
+<h4 id="complications">Complications</h4>
+<ul>
+<li>My desktop didn't have Bluetooth</li>
+<li>Zero experience working with Bluetooth LE</li>
+</ul>
+<p>I solved the first complication by getting a USB dongle off of Amazon.  The second complication would be solved as I went.</p>
+<h2 id="step-1---research">Step 1 - Research</h2>
+<p>The first task was to google for as much information as possible.  This lead to a piece of software called <a href="https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp">nRF Connect</a>.  This Android software shows information about all your Bluetooth devices, allows you connect to them, show you all the available profiles, and log data.  With this I learned the bike uses a chip called <a href="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/include/bluetooth/services/nus.html">Nordic UART</a>.  This is basically a serial connection at one end and Bluetooth on the other.  This was great news - it should mean that the bike is just streaming bytes.</p>
+<p>However, connecting to it with nRF connect didn't immediately provide me with any data from the bike.  It was connected, I was subscribed to changes, but no data was being sent.  This would require more work.</p>
+<p>So the next step was to run the app and log all the Bluetooth traffic to see what was happening.  More googling sent me to <a href="https://medium.com/@charlie.d.anderson/how-to-get-the-bluetooth-host-controller-interface-logs-from-a-modern-android-phone-d23bde00b9fa">this article</a> that describes enabling the Bluetooth log on my phone and downloading it for analysis.  I enabled screen recording on my phone, enabled Bluetooth logging, did a couple of runs on the bike, and then downloaded the logs.</p>
+<p>Using Wireshark and comparing it with my recorded video I got see how the app communicated with the bike.  The app would send a command packet and the bike would respond with one or more packets.  The app would send a single command continuously when the workout started and the bike would respond with packets of similar looking data.</p>
+<h2 id="step-2---connecting-to-the-bike">Step 2 - Connecting to the Bike</h2>
+<p>Using the logs and Wireshark, I determined that the app sends 6 different commands.  So the next step was to create a simple console application that could connect to bike, send the commands, and receive the results.  I needed to see if I could, at minimum, replicate the activity of the app using my own software on the desktop.</p>
+<p>The platform of choice for this adventure was .NET 5.0 on Windows.  I needed access to the Windows Runtime for the Bluetooth API in Windows.  I discovered that <a href="https://docs.microsoft.com/en-us/windows/apps/desktop/modernize/desktop-to-uwp-enhance">this is extremely easy to do</a>.</p>
+<h2 id="step-3---interpreting-the-data">Step 3 - Interpreting the Data</h2>
+<p>The first command the app sends I will call the <code>Connect</code> command.  This command must be sent before any other commands.  As soon as you send this command, you must send commands at a minimum of one second intervals or the bike will close the connection.</p>
+<pre><code class="lang-none">Start Command:  f9 d0 00 c9
+Response:       f9 e0 00 d9
+</code></pre>
+<p>The second command the app sends I call the <code>Hold</code> command.  Since you must send commands at regular intervals once you've connected, sending this command appears to just keep the connection open.  The bike responds with 2 packets of identical data every time this command is sent.</p>
+<pre><code class="lang-none">Hold Command:   f9 d1 05 02 00 00 00 00 d1 
+Response #1:    f9 e1 10 07 00 00 00 00 00 00 02 00 03 37 00 00 2a
+Response #2:    f9 e2 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 eb
+</code></pre>
+<p>The 3rd and 4th commands I just call <code>Info1</code> and <code>Info2</code>.  These commands are sent by the app once per connection and they always return the same information.  This could be model or calibration information.</p>
+<pre><code class="lang-none">Info1 Command:  f9 d3 0d 01 00 00 2c 00 00 3c 00 a0 00 00 00 00 e2 00 00 00
+Response #1:    f9 e3 01 00 dd
+Response #2:    f9 e3 0c 00 00 00 00 00 00 00 00 00 00 00 00 e8
+
+Info2 Command:  f9 d4 0f 02 00 00 00 00 00 00 00 00 00 00 00 00 1f 0f 0c 00
+Response:       f9 e4 02 00 00 df
+</code></pre>
+<p>At this point we can see the pattern emerge.  Every command and every response starts with the byte <code>F9</code>.  The next byte contains the command or response type; the high nibble is <code>D</code> for commands and <code>E</code> for responses.  The next byte is the length of the packet not including this header.  The next byte after that appears to be some kind of checksum.</p>
+<p>The most interesting commands come next.  I call these the <code>Start Workout</code> and <code>Continue Workout</code> commands.  The first command is sent when you start the workout and then app continuously sends the second command to sample data from the bike.</p>
+<pre><code class="lang-none">Start Cmd:      f9 d5 0d 01 00 00 00 00 00 00 00 00 00 00 00 00 dc 00 00 00
+Response #1:    f9 e5 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 ef
+Response #2:    f9 e6 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ef
+Response #3:    f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
+    
+Continue Cmd:   f9 d5 0d 00 00 00 00 00 00 00 00 00 00 00 00 00 db 00 00 00
+Response #1:    f9 e5 10 00 09 00 03 00 07 00 00 00 99 00 00 53 00 00 01 ee
+Response #2:    f9 e6 10 00 00 00 00 00 06 00 00 00 00 00 00 00 00 00 2f 24
+Response #3:    f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
+</code></pre>
+<p>At this point I could start assembling and interpreting the data.  The first thing I did was combine all the workout result packets together and lop off the header.  Then I biked for 10 minutes collecting the data.</p>
+<pre><code class="lang-none">00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 EF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 EF 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+01 00 00 00 00 00 00 00 00 00 00 00 00 00 01 F0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 EF 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+02 00 00 00 00 00 00 00 00 00 00 00 00 00 01 F1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 EF 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+03 00 00 00 01 00 00 00 BC 00 00 66 00 00 01 15 00 00 00 00 07 00 00 00 00 00 00 00 00 00 19 0F 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+03 00 01 00 01 00 00 00 BB 00 00 65 00 00 01 14 00 00 00 00 07 00 00 00 00 00 00 00 00 00 19 0F 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+04 00 01 00 02 00 00 00 BE 00 00 67 00 00 01 1B 00 00 00 00 07 00 00 00 00 00 00 00 00 00 25 1B 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+05 00 01 00 03 00 00 00 C1 00 00 69 00 00 01 22 00 00 00 00 07 00 00 00 00 00 00 00 00 00 2D 23 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+06 00 02 00 04 00 00 00 C3 00 00 6A 00 00 01 28 00 00 00 00 07 00 00 00 00 00 00 00 00 00 32 28 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+07 00 02 00 06 00 00 00 C1 00 00 69 00 00 01 28 00 00 00 00 07 00 00 00 00 00 00 00 00 00 36 2C 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+07 00 03 00 06 00 00 00 C1 00 00 69 00 00 01 29 00 00 00 00 07 00 00 00 00 00 00 00 00 00 36 2C 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+08 00 03 00 07 00 00 00 BE 00 00 67 00 00 01 26 00 00 00 00 07 00 00 00 00 00 00 00 00 00 39 2F 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+09 00 03 00 08 00 00 00 BA 00 00 65 00 00 01 22 00 00 00 00 07 00 00 00 00 00 00 00 00 00 3B 31 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0A 00 04 00 09 00 00 00 B0 00 00 5F 00 00 01 15 00 00 00 00 07 00 00 00 00 00 00 00 00 00 3C 32 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0B 00 04 00 0A 00 00 00 B5 00 00 63 00 00 01 20 00 00 00 00 07 00 00 00 00 00 00 00 00 00 3D 33 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0B 00 05 00 0A 00 00 00 B8 00 00 64 00 00 01 25 00 00 00 00 07 00 00 00 00 00 00 00 00 00 3D 33 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0C 00 05 00 0C 00 00 00 BB 00 00 66 00 00 01 2D 00 00 00 00 07 00 00 00 00 00 00 00 00 00 3E 34 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0D 00 06 00 0D 00 00 00 BF 00 00 68 00 00 01 36 00 00 00 00 07 00 00 00 00 00 00 00 00 00 3F 35 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0E 00 06 00 0E 00 00 00 BF 00 00 68 00 00 01 38 00 00 00 00 07 00 00 00 00 00 00 00 00 00 40 36 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0F 00 06 00 0F 00 00 00 BF 00 00 68 00 00 01 3A 00 00 00 00 07 00 00 00 00 00 00 00 00 00 41 37 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+0F 00 07 00 0F 00 00 00 BE 00 00 67 00 00 01 39 00 00 00 00 07 00 00 00 00 00 00 00 00 00 41 37 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 
+...
+</code></pre>
+<h4 id="observations">Observations</h4>
+<ul>
+<li>Lots of constant zeros and a few constant values that can be ignored.</li>
+<li>Some values are bytes and some values are words.</li>
+<li>Some values increased continuously while others were directly related to how fast I was peddling.  These latter values were also zero when not peddling.</li>
+</ul>
+<p>Based on these observations I wrote code the break the data down into 9 different byte and word fields.  I ran my console app again during a workout to collect these values into CSV and then threw it into Excel for analysis.  Most of the values became pretty obvious by looking at them.  The slowest part for me was figuring out the bike sends imperial measurements instead of metric.  The 9 fields in order:</p>
+<ul>
+<li>The current second of workout.  This value goes from 0 to 59 over and over.  If you sample faster than every second this value will stay the same for multiple samples.</li>
+<li>The distance in hundredths of a mile.</li>
+<li>The workout time in seconds.  This starts at zero and continues increasing for as long as I am peddling.  When I stop peddling this value will stay the same.</li>
+<li>Speed in tenths of a mile per hour.</li>
+<li>Rotations per minute.</li>
+<li>Unknown (one byte).  Seems related to workout speed but if not moving it increases by one every second and periodically resets to a value and then keeps counting.</li>
+<li>A speed value from 0 to 9.</li>
+<li>2 other unknown byte values.  Both appears to be an average value related to speed over the whole workout but exactly what it represents I don't know.</li>
+</ul>
+<p>With these observations, I decided I only needed 3 commands:  The <code>Connect</code> command, the <code>Start Workout</code> command, and the <code>Continue Workout</code> command.  I also didn't need to understand the commands; I just needed to send those bytes in that order.</p>
+<h2 id="step-4---putting-it-all-together">Step 4 - Putting It All Together</h2>
+<p>The final step was re-arranging the work I had done into a <a href="api/">consistent API</a> and then create a WPF application for the user interface.  This part wasn't too hard; this is the perfect type of application for MVVM.  I also used Entity Framework Core to very quickly put together the SQLite storage for workout information.</p>
+<p><img src="images/screenshot.png" alt=""></p>
+<h4 id="final-app-features">Final App Features:</h4>
+<ul>
+<li>Displays workout time, current speed, current distance, and current RPM during the workout.</li>
+<li>At the end of the workout, the values switch to the averages of the workout.</li>
+<li>Automatically detects the Bluetooth activating on the bike (it's turned on by peddling).  This starts the workout and pops up the window.</li>
+<li>Pauses the workout when peddling stops.  The workout time will blink while paused.  After one minute of being paused the workout ends automatically.</li>
+<li>Start and Stop buttons for manually controlling the workout.</li>
+<li>The daily distance is shown for goal setting.</li>
+<li>Clicking the X to close the app minimizes it to the system tray.</li>
+<li>Includes system tray icon with context menu.</li>
+<li>Window can be set to Always on Top (right click the window for context menu).</li>
+<li>Option to have the application automatically start on login.</li>
+<li>Saves the workout information and all the samples from the bike to a SQLite database.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The app works great and is everything that I hoped it could be.  Now it's just a matter of seeing how far I can peddle.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container-fluid">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright (c) 2021 by Wayne Venables</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

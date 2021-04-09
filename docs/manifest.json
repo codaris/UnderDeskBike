@@ -1,0 +1,323 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Projects/Other/UnderDeskBikeGit/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Codaris.Common.ExceptionEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Codaris.Common.ExceptionEventArgs.html",
+          "hash": "mYTLI4EDLqBDlwiDqjqPnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Codaris.Common.NotifyObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Codaris.Common.NotifyObject.html",
+          "hash": "VBMSah0mv+X91eY4gTVRpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Codaris.Common.ScheduledTimer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Codaris.Common.ScheduledTimer.html",
+          "hash": "L7/NgaQnDPqMYdyAiXnyig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Codaris.Common.TaskExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Codaris.Common.TaskExtensions.html",
+          "hash": "p7OjnhJMVKdqTubX1SgPeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Codaris.Common.Util.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Codaris.Common.Util.html",
+          "hash": "7VXnRC83AOz6jkqmlMCiZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Codaris.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Codaris.Common.html",
+          "hash": "D954dJyzoTA3LfRTLZjvBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.Bike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.Bike.html",
+          "hash": "pyhtgDmeIZBKUP/2cibYjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.BikeDataException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.BikeDataException.html",
+          "hash": "yquDtJ1Q1OivhehPL+M7mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.BikeWorkoutData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.BikeWorkoutData.html",
+          "hash": "50S4MKycufzGCEuVuqV02Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.BikeWorkoutEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.BikeWorkoutEventArgs.html",
+          "hash": "Fu+dlCqwMoOaih0I2GIRcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.Models.Context.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.Models.Context.html",
+          "hash": "fEQytNx9cJvviABzbsd6qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.Models.Workout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.Models.Workout.html",
+          "hash": "jl9RUgcqjQxoIE0WQzgayg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.Models.WorkoutEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.Models.WorkoutEntry.html",
+          "hash": "WpGBPo9EfhCcdeCfoQhdvw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.Models.html",
+          "hash": "l0bHjpo248FmZpqB1ebx/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/UnderDeskBike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/UnderDeskBike.html",
+          "hash": "DGmpkLQ3zzZl06iqHFl6dw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "7ojdWnqmV11nttVVmlLAFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Rv6vmVncZsBTBUxmQdMtXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/header.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/header.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/screenshot.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/screenshot.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "SpvobZ7B4LEiyjBEZErQwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "MvwmYgP6E51dGMiLjszgZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 2
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 15,
+          "skipped_file_count": 7
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

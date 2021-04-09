@@ -1,0 +1,105 @@
+﻿<Window x:Class="UnderDeskBike.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:UnderDeskBike.ViewModels"          
+        xmlns:local="clr-namespace:UnderDeskBike"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel, IsDesignTimeCreatable=true}"
+        Title="Under Desk Bike" Height="220" Width="300" Icon="/Resources/trayicon.ico" ResizeMode="NoResize" MouseDown="Window_MouseDown" Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed"
+        Topmost="{Binding AlwaysOnTop, Mode=OneWay}" ShowInTaskbar="{Binding ShowInTaskbar, Mode=OneWay}">
+    <Window.Resources>
+        <Storyboard x:Key="flashAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" AutoReverse="True" Duration="0:0:0.5" RepeatBehavior="Forever" />
+        </Storyboard>
+        <ContextMenu x:Shared="false" x:Key="MainMenu">
+            <MenuItem Header="Show Window" Click="Show_Click" />
+            <MenuItem Header="Run on Startup" IsCheckable="True" IsChecked="{Binding RunAtStartup}" />
+            <MenuItem Header="Exit" Click="Exit_Click" />
+        </ContextMenu>
+    </Window.Resources>
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Always on Top" IsCheckable="True" IsChecked="{Binding AlwaysOnTop}"  />
+            <MenuItem Header="Show in Taskbar" IsCheckable="True" IsChecked="{Binding ShowInTaskbar}"  />
+            <MenuItem Header="Run on Startup" IsCheckable="True" IsChecked="{Binding RunAtStartup}" />
+            <MenuItem Header="Exit" Click="Exit_Click" />
+        </ContextMenu>
+    </Window.ContextMenu>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Path=WorkoutTime, StringFormat=g, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" FontFamily="Bahnschrift Light" FontSize="48">
+            <TextBlock.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsPaused}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Name="flash" Storyboard="{StaticResource flashAnimation}" />
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="flash"/>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Path=StatusText, Mode=OneWay}" HorizontalAlignment="Center" FontFamily="Bahnschrift Light" />
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterial Kind="Speedometer" Height="22" />
+                <TextBlock HorizontalAlignment="Stretch" FontFamily="Bahnschrift" FontSize="20" Margin="5,0,0,0" Text="{Binding Path=SpeedKph, StringFormat=n1, Mode=OneWay}" />
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontFamily="Bahnschrift light">km/h</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconOcticons Kind="Milestone" Height="22" />
+                <TextBlock HorizontalAlignment="Stretch" FontFamily="Bahnschrift" FontSize="20" Margin="5,0,0,0" Text="{Binding Path=DistanceKms, StringFormat=n1, Mode=OneWay}" />
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontFamily="Bahnschrift light">kms</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconEntypo Kind="Cycle" Height="22" />
+                <TextBlock HorizontalAlignment="Stretch" FontFamily="Bahnschrift" FontSize="20" Margin="5,0,0,0" Text="{Binding Path=RotationsPerMinute, StringFormat=n0, Mode=OneWay}" /> 
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontFamily="Bahnschrift light">rpm</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Label FontFamily="Bahnschrift light" Margin="0,2,0,0" Padding="0" MouseDoubleClick="Label_MouseDoubleClick" Content="{Binding SummaryText, Mode=OneWay}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Button Margin="10,10,10,5" FontFamily="Bahnschrift" Background="#FFEAEAEA" BorderBrush="Gray" Width="60" Padding="0,4,0,2" Command="{Binding Path=StartCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Kind="Play" Height="10" Margin="0,1,0,0" />
+                    <TextBlock>Start</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="10,10,10,5" FontFamily="Bahnschrift" Background="#FFEAEAEA" BorderBrush="Gray" Width="60" Padding="0,4,0,2" Command="{Binding Path=StopCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Kind="Stop" Height="10" Margin="0,1,0,0" />
+                    <TextBlock>Stop</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <tb:TaskbarIcon x:Name="NotifyIcon" Visibility="Visible" ToolTipText="Under Desk Bike"
+            IconSource="/Resources/trayicon.ico" ContextMenu="{StaticResource MainMenu}" LeftClickCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=ShowCommand}"
+        />
+    </Grid>
+</Window>
