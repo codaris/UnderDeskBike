@@ -247,7 +247,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "SpvobZ7B4LEiyjBEZErQwg=="
+          "hash": "2edY8K3FciPJddR02ExkHw=="
         }
       },
       "is_incremental": false,
@@ -259,7 +259,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "MvwmYgP6E51dGMiLjszgZA=="
+          "hash": "/dRMrgfWVW/sv4U0BIk6eA=="
         }
       },
       "is_incremental": false,
@@ -279,13 +279,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 2,
-          "skipped_file_count": 2
+          "skipped_file_count": 1
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 15,
-          "skipped_file_count": 7
+          "skipped_file_count": 15
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

@@ -156,3 +156,4 @@ The final step was re-arranging the work I had done into a [consistent API](api/
 
 The app works great and is everything that I hoped it could be.  Now it's just a matter of seeing how far I can peddle.  
 
+[View this project on Github](https://github.com/codaris/UnderDeskBike)
