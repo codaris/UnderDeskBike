@@ -1,8 +1,8 @@
 # Under Desk Bike
 
-![](docs/images/header.png)
-
 This project is a Windows desktop application and library for interfacing with an under desk exercise bike.  This is a personal project designed for this exact model of exercise bike.  It might work for other exercise bikes but probably not without some modification.
+
+![](docs/images/header.png)
 
 You can learn more about how this application was developed by [reading this article](https://codaris.github.io/UnderDeskBike/).
 
