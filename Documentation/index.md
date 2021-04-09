@@ -4,7 +4,7 @@
 
 Due to COVID, I haven't been getting my usual amount of exercise this year.  To help with that, I decided to take a chance and order an under desk exercise bike to get some more cardio.  The bike I bought is decent: good tension, doesn't move around, is very quiet, and has Bluetooth connectivity for tracking workouts.  
 
-If you're thinking of getting one of these under desk bikes I wouldn't automatically recommend it.  If your desk is normal sized you will bump your knees on it.  But my desk is designed to be used with a keyboard tray and I hate keyboard trays.  So instead my keyboard is on the top of the desk, my chair is raised up, and I use a footrest.  All this means that my desk is actually the perfect height for peddling.
+If you're thinking of getting one of these under desk bikes I wouldn't automatically recommend it.  If your desk is normal sized you will bump your knees on it.  But my desk is designed to be used with a keyboard tray and I hate keyboard trays.  So instead my keyboard is on the top of the desk, my chair is raised up, and I use a footrest.  All this means that my desk is actually the perfect height for pedaling.
 
 Bluetooth connectivity is important to me; being able to see and record speed and distance is a big motivator.  For connectivity there is unsurprisingly a phone app.  It's not a good app.  It feels unpolished and gets mediocre reviews.  And, of course, it also requires a signup and tries to upsell you on a subscription for classes.  I can ignore all that.  But, sitting at my workstation, I don't want to take out my phone and go through 5 steps every time I want to workout.  Nor do I want to keep my phone on and propped up on my desk for long periods of time.  Lastly, I very much did not want all my workout data locked away in this app.
 
@@ -18,7 +18,7 @@ I was inspired by this article: [Unbricking a $2,000 Bike With a $10 Raspberry P
 
 * Display, in real time, the workout data in a small window on the desktop.
 * Record the workout data to a SQLite database for analysis, goal setting, and motivation.
-* If possible, have the app start and stop automatically whenever I start peddling.
+* If possible, have the app start and stop automatically whenever I start pedaling.
 
 #### Complications
 
@@ -117,13 +117,13 @@ At this point I could start assembling and interpreting the data.  The first thi
 
 * Lots of constant zeros and a few constant values that can be ignored.
 * Some values are bytes and some values are words.
-* Some values increased continuously while others were directly related to how fast I was peddling.  These latter values were also zero when not peddling.
+* Some values increased continuously while others were directly related to how fast I was pedaling.  These latter values were also zero when not pedaling.
 
 Based on these observations I wrote code the break the data down into 9 different byte and word fields.  I ran my console app again during a workout to collect these values into CSV and then threw it into Excel for analysis.  Most of the values became pretty obvious by looking at them.  The slowest part for me was figuring out the bike sends imperial measurements instead of metric.  The 9 fields in order:
 
 * The current second of workout.  This value goes from 0 to 59 over and over.  If you sample faster than every second this value will stay the same for multiple samples.
 * The distance in hundredths of a mile.
-* The workout time in seconds.  This starts at zero and continues increasing for as long as I am peddling.  When I stop peddling this value will stay the same.
+* The workout time in seconds.  This starts at zero and continues increasing for as long as I am pedaling.  When I stop pedaling this value will stay the same.
 * Speed in tenths of a mile per hour.
 * Rotations per minute.
 * Unknown (one byte).  Seems related to workout speed but if not moving it increases by one every second and periodically resets to a value and then keeps counting.  
@@ -142,8 +142,8 @@ The final step was re-arranging the work I had done into a [consistent API](api/
 
 * Displays workout time, current speed, current distance, and current RPM during the workout.
 * At the end of the workout, the values switch to the averages of the workout.
-* Automatically detects the Bluetooth activating on the bike (it's turned on by peddling).  This starts the workout and pops up the window.
-* Pauses the workout when peddling stops.  The workout time will blink while paused.  After one minute of being paused the workout ends automatically.
+* Automatically detects the Bluetooth activating on the bike (it's turned on by pedaling).  This starts the workout and pops up the window.
+* Pauses the workout when pedaling stops.  The workout time will blink while paused.  After one minute of being paused the workout ends automatically.
 * Start and Stop buttons for manually controlling the workout.
 * The daily distance is shown for goal setting.
 * Clicking the X to close the app minimizes it to the system tray.
@@ -154,6 +154,6 @@ The final step was re-arranging the work I had done into a [consistent API](api/
 
 ## Conclusion
 
-The app works great and is everything that I hoped it could be.  Now it's just a matter of seeing how far I can peddle.  
+The app works great and is everything that I hoped it could be.  Now it's just a matter of seeing how far I can pedal.  
 
 [View this project on Github](https://github.com/codaris/UnderDeskBike)
