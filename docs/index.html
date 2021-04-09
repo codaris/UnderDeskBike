@@ -74,7 +74,7 @@
 
 <p><img src="images/header.png" alt=""></p>
 <p>Due to COVID, I haven't been getting my usual amount of exercise this year.  To help with that, I decided to take a chance and order an under desk exercise bike to get some more cardio.  The bike I bought is decent: good tension, doesn't move around, is very quiet, and has Bluetooth connectivity for tracking workouts.</p>
-<p>If you're thinking of getting one of these under desk bikes I wouldn't automatically recommend it.  If your desk is normal sized you will bump your knees on it.  But my desk is designed to be used with a keyboard tray and I hate keyboard trays.  So instead my keyboard is on the top of the desk, my chair is raised up, and I use a footrest.  All this means that my desk is actually the perfect height for peddling.</p>
+<p>If you're thinking of getting one of these under desk bikes I wouldn't automatically recommend it.  If your desk is normal sized you will bump your knees on it.  But my desk is designed to be used with a keyboard tray and I hate keyboard trays.  So instead my keyboard is on the top of the desk, my chair is raised up, and I use a footrest.  All this means that my desk is actually the perfect height for pedaling.</p>
 <p>Bluetooth connectivity is important to me; being able to see and record speed and distance is a big motivator.  For connectivity there is unsurprisingly a phone app.  It's not a good app.  It feels unpolished and gets mediocre reviews.  And, of course, it also requires a signup and tries to upsell you on a subscription for classes.  I can ignore all that.  But, sitting at my workstation, I don't want to take out my phone and go through 5 steps every time I want to workout.  Nor do I want to keep my phone on and propped up on my desk for long periods of time.  Lastly, I very much did not want all my workout data locked away in this app.</p>
 <p>The solution was obvious -- build my own desktop app!</p>
 <h2 id="the-project">The Project</h2>
@@ -83,7 +83,7 @@
 <ul>
 <li>Display, in real time, the workout data in a small window on the desktop.</li>
 <li>Record the workout data to a SQLite database for analysis, goal setting, and motivation.</li>
-<li>If possible, have the app start and stop automatically whenever I start peddling.</li>
+<li>If possible, have the app start and stop automatically whenever I start pedaling.</li>
 </ul>
 <h4 id="complications">Complications</h4>
 <ul>
@@ -156,13 +156,13 @@ Response #3:    f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
 <ul>
 <li>Lots of constant zeros and a few constant values that can be ignored.</li>
 <li>Some values are bytes and some values are words.</li>
-<li>Some values increased continuously while others were directly related to how fast I was peddling.  These latter values were also zero when not peddling.</li>
+<li>Some values increased continuously while others were directly related to how fast I was pedaling.  These latter values were also zero when not pedaling.</li>
 </ul>
 <p>Based on these observations I wrote code the break the data down into 9 different byte and word fields.  I ran my console app again during a workout to collect these values into CSV and then threw it into Excel for analysis.  Most of the values became pretty obvious by looking at them.  The slowest part for me was figuring out the bike sends imperial measurements instead of metric.  The 9 fields in order:</p>
 <ul>
 <li>The current second of workout.  This value goes from 0 to 59 over and over.  If you sample faster than every second this value will stay the same for multiple samples.</li>
 <li>The distance in hundredths of a mile.</li>
-<li>The workout time in seconds.  This starts at zero and continues increasing for as long as I am peddling.  When I stop peddling this value will stay the same.</li>
+<li>The workout time in seconds.  This starts at zero and continues increasing for as long as I am pedaling.  When I stop pedaling this value will stay the same.</li>
 <li>Speed in tenths of a mile per hour.</li>
 <li>Rotations per minute.</li>
 <li>Unknown (one byte).  Seems related to workout speed but if not moving it increases by one every second and periodically resets to a value and then keeps counting.</li>
@@ -177,8 +177,8 @@ Response #3:    f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
 <ul>
 <li>Displays workout time, current speed, current distance, and current RPM during the workout.</li>
 <li>At the end of the workout, the values switch to the averages of the workout.</li>
-<li>Automatically detects the Bluetooth activating on the bike (it's turned on by peddling).  This starts the workout and pops up the window.</li>
-<li>Pauses the workout when peddling stops.  The workout time will blink while paused.  After one minute of being paused the workout ends automatically.</li>
+<li>Automatically detects the Bluetooth activating on the bike (it's turned on by pedaling).  This starts the workout and pops up the window.</li>
+<li>Pauses the workout when pedaling stops.  The workout time will blink while paused.  After one minute of being paused the workout ends automatically.</li>
 <li>Start and Stop buttons for manually controlling the workout.</li>
 <li>The daily distance is shown for goal setting.</li>
 <li>Clicking the X to close the app minimizes it to the system tray.</li>
@@ -188,7 +188,7 @@ Response #3:    f9 e7 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f0
 <li>Saves the workout information and all the samples from the bike to a SQLite database.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>The app works great and is everything that I hoped it could be.  Now it's just a matter of seeing how far I can peddle.</p>
+<p>The app works great and is everything that I hoped it could be.  Now it's just a matter of seeing how far I can pedal.</p>
 <p><a href="https://github.com/codaris/UnderDeskBike">View this project on Github</a></p>
 </article>
           </div>

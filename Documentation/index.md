@@ -8,7 +8,7 @@ If you're thinking of getting one of these under desk bikes I wouldn't automatic
 
 Bluetooth connectivity is important to me; being able to see and record speed and distance is a big motivator.  For connectivity there is unsurprisingly a phone app.  It's not a good app.  It feels unpolished and gets mediocre reviews.  And, of course, it also requires a signup and tries to upsell you on a subscription for classes.  I can ignore all that.  But, sitting at my workstation, I don't want to take out my phone and go through 5 steps every time I want to workout.  Nor do I want to keep my phone on and propped up on my desk for long periods of time.  Lastly, I very much did not want all my workout data locked away in this app.
 
-The solution was obvious -- build my own desktop app!
+The solution was obvious -- build my own desktop app! 
 
 ## The Project
 
