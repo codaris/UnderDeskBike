@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Bike
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -88,13 +88,14 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Codaris.Common.NotifyObject.html">NotifyObject</a></div>
     <div class="level2"><span class="xref">Bike</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IDisposable</span></div>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -102,7 +103,7 @@
       <a class="xref" href="Codaris.Common.NotifyObject.html#Codaris_Common_NotifyObject_PropertyChanged">NotifyObject.PropertyChanged</a>
     </div>
     <div>
-      <span class="xref">Codaris.Common.NotifyObject.SetProperty&lt;T&gt;(T, T, Action&lt;&gt;, System.String)</span>
+      <a class="xref" href="Codaris.Common.NotifyObject.html#Codaris_Common_NotifyObject_SetProperty__1___0____0_System_Action___0__System_String_">NotifyObject.SetProperty&lt;T&gt;(T, T, Action&lt;T&gt;, String)</a>
     </div>
     <div>
       <a class="xref" href="Codaris.Common.NotifyObject.html#Codaris_Common_NotifyObject_OnPropertyChanged_System_String_">NotifyObject.OnPropertyChanged(String)</a>
@@ -112,14 +113,19 @@
   <h6><strong>Assembly</strong>: UnderDeskBike.Device.dll</h6>
   <h5 id="UnderDeskBike_Bike_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Bike : NotifyObject, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class Bike : NotifyObject, INotifyPropertyChanged, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike__ctor_System_IO_TextWriter_.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.%23ctor(System.IO.TextWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L100">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike__ctor_" data-uid="UnderDeskBike.Bike.#ctor*"></a>
-  <h4 id="UnderDeskBike_Bike__ctor_TextWriter_" data-uid="UnderDeskBike.Bike.#ctor(TextWriter)">Bike(TextWriter)</h4>
+  <h4 id="UnderDeskBike_Bike__ctor_System_IO_TextWriter_" data-uid="UnderDeskBike.Bike.#ctor(System.IO.TextWriter)">Bike(TextWriter)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="UnderDeskBike.Bike.html">Bike</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -137,7 +143,7 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">TextWriter</span></td>
+        <td class="nowrap"><span class="xref">System.IO.TextWriter</span></td>
         <td class="nowrap"><span class="parametername">logger</span></td>
         <td><p>The logger.</p>
 </td>
@@ -146,8 +152,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_IsConnected.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.IsConnected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L38">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_IsConnected_" data-uid="UnderDeskBike.Bike.IsConnected*"></a>
   <h4 id="UnderDeskBike_Bike_IsConnected" data-uid="UnderDeskBike.Bike.IsConnected">IsConnected</h4>
   <div class="markdown level1 summary"><p>Gets a value indicating whether this instance is connected.</p>
@@ -160,12 +171,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="xref">System.Boolean</span></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_IsWorkoutRunning.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.IsWorkoutRunning%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L43">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_IsWorkoutRunning_" data-uid="UnderDeskBike.Bike.IsWorkoutRunning*"></a>
   <h4 id="UnderDeskBike_Bike_IsWorkoutRunning" data-uid="UnderDeskBike.Bike.IsWorkoutRunning">IsWorkoutRunning</h4>
   <div class="markdown level1 summary"><p>Gets a value indicating whether this instance is workout active.</p>
@@ -178,12 +194,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="xref">System.Boolean</span></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_WorkoutData.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.WorkoutData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L32">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_WorkoutData_" data-uid="UnderDeskBike.Bike.WorkoutData*"></a>
   <h4 id="UnderDeskBike_Bike_WorkoutData" data-uid="UnderDeskBike.Bike.WorkoutData">WorkoutData</h4>
   <div class="markdown level1 summary"><p>Gets the distance in miles.</p>
@@ -202,8 +223,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_Dispose.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L285">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_Dispose_" data-uid="UnderDeskBike.Bike.Dispose*"></a>
   <h4 id="UnderDeskBike_Bike_Dispose" data-uid="UnderDeskBike.Bike.Dispose">Dispose()</h4>
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -212,8 +238,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L269">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_Dispose_" data-uid="UnderDeskBike.Bike.Dispose*"></a>
   <h4 id="UnderDeskBike_Bike_Dispose_System_Boolean_" data-uid="UnderDeskBike.Bike.Dispose(System.Boolean)">Dispose(Boolean)</h4>
   <div class="markdown level1 summary"><p>Releases unmanaged and - optionally - managed resources.</p>
@@ -233,22 +264,27 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td class="nowrap"><span class="xref">System.Boolean</span></td>
         <td class="nowrap"><span class="parametername">disposing</span></td>
         <td><p><code>true</code> to release both managed and unmanaged resources; <code>false</code> to release only unmanaged resources.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_StartListening.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.StartListening%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L111">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_StartListening_" data-uid="UnderDeskBike.Bike.StartListening*"></a>
   <h4 id="UnderDeskBike_Bike_StartListening" data-uid="UnderDeskBike.Bike.StartListening">StartListening()</h4>
   <div class="markdown level1 summary"><p>Start listening for a connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task StartListening()</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task StartListening()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -260,21 +296,26 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> representing the asynchronous operation.</p>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_StartWorkout_System_Int32_.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.StartWorkout(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L143">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_StartWorkout_" data-uid="UnderDeskBike.Bike.StartWorkout*"></a>
   <h4 id="UnderDeskBike_Bike_StartWorkout_System_Int32_" data-uid="UnderDeskBike.Bike.StartWorkout(System.Int32)">StartWorkout(Int32)</h4>
   <div class="markdown level1 summary"><p>Starts the workout.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; StartWorkout(int interval = 250)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; StartWorkout(int interval = 250)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -287,7 +328,7 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td class="nowrap"><span class="xref">System.Int32</span></td>
         <td class="nowrap"><span class="parametername">interval</span></td>
         <td><p>The interval.</p>
 </td>
@@ -304,21 +345,26 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
-        <td><p>A <see cref="!:Task"></see> representing the asynchronous operation.</p>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_StopListening.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.StopListening%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L120">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_StopListening_" data-uid="UnderDeskBike.Bike.StopListening*"></a>
   <h4 id="UnderDeskBike_Bike_StopListening" data-uid="UnderDeskBike.Bike.StopListening">StopListening()</h4>
   <div class="markdown level1 summary"><p>Stops the listening.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task StopListening()</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task StopListening()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -330,21 +376,26 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> representing the asynchronous operation.</p>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_StopWorkout.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.StopWorkout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L160">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_StopWorkout_" data-uid="UnderDeskBike.Bike.StopWorkout*"></a>
   <h4 id="UnderDeskBike_Bike_StopWorkout" data-uid="UnderDeskBike.Bike.StopWorkout">StopWorkout()</h4>
   <div class="markdown level1 summary"><p>Stops the workout.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task StopWorkout()</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task StopWorkout()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -356,21 +407,26 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> representing the asynchronous operation.</p>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_WaitForConnection.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.WaitForConnection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L130">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_WaitForConnection_" data-uid="UnderDeskBike.Bike.WaitForConnection*"></a>
   <h4 id="UnderDeskBike_Bike_WaitForConnection" data-uid="UnderDeskBike.Bike.WaitForConnection">WaitForConnection()</h4>
   <div class="markdown level1 summary"><p>Waits for connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task WaitForConnection()</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task WaitForConnection()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -382,14 +438,19 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> representing the asynchronous operation.</p>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_WaitForWorkout.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.WaitForWorkout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L172">View Source</a>
+  </span>
   <a id="UnderDeskBike_Bike_WaitForWorkout_" data-uid="UnderDeskBike.Bike.WaitForWorkout*"></a>
   <h4 id="UnderDeskBike_Bike_WaitForWorkout" data-uid="UnderDeskBike.Bike.WaitForWorkout">WaitForWorkout()</h4>
   <div class="markdown level1 summary"><p>Waits for workout end.</p>
@@ -408,16 +469,21 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> representing the asynchronous operation.</p>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="events">Events
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_Connected.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.Connected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L48">View Source</a>
+  </span>
   <h4 id="UnderDeskBike_Bike_Connected" data-uid="UnderDeskBike.Bike.Connected">Connected</h4>
   <div class="markdown level1 summary"><p>Occurs when connected.</p>
 </div>
@@ -429,12 +495,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_Disconnected.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.Disconnected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L53">View Source</a>
+  </span>
   <h4 id="UnderDeskBike_Bike_Disconnected" data-uid="UnderDeskBike.Bike.Disconnected">Disconnected</h4>
   <div class="markdown level1 summary"><p>Occurs when disconnected.</p>
 </div>
@@ -446,12 +517,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_Error.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.Error%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L73">View Source</a>
+  </span>
   <h4 id="UnderDeskBike_Bike_Error" data-uid="UnderDeskBike.Bike.Error">Error</h4>
   <div class="markdown level1 summary"><p>Occurs when a background error is triggered</p>
 </div>
@@ -463,12 +539,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span>&lt;<a class="xref" href="Codaris.Common.ExceptionEventArgs.html">ExceptionEventArgs</a>&gt;</td>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Codaris.Common.ExceptionEventArgs.html">ExceptionEventArgs</a>&gt;</td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_WorkoutEnded.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.WorkoutEnded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L68">View Source</a>
+  </span>
   <h4 id="UnderDeskBike_Bike_WorkoutEnded" data-uid="UnderDeskBike.Bike.WorkoutEnded">WorkoutEnded</h4>
   <div class="markdown level1 summary"><p>Occurs when ending workout.</p>
 </div>
@@ -480,12 +561,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_WorkoutStarted.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.WorkoutStarted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L63">View Source</a>
+  </span>
   <h4 id="UnderDeskBike_Bike_WorkoutStarted" data-uid="UnderDeskBike.Bike.WorkoutStarted">WorkoutStarted</h4>
   <div class="markdown level1 summary"><p>Occurs when start workout.</p>
 </div>
@@ -497,12 +583,17 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike_WorkoutUpdate.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike.WorkoutUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L58">View Source</a>
+  </span>
   <h4 id="UnderDeskBike_Bike_WorkoutUpdate" data-uid="UnderDeskBike.Bike.WorkoutUpdate">WorkoutUpdate</h4>
   <div class="markdown level1 summary"><p>Occurs when workout update occurs.</p>
 </div>
@@ -514,17 +605,21 @@
   <table class="table table-bordered table-striped table-condensed">
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span>&lt;<a class="xref" href="UnderDeskBike.BikeWorkoutEventArgs.html">BikeWorkoutEventArgs</a>&gt;</td>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="UnderDeskBike.BikeWorkoutEventArgs.html">BikeWorkoutEventArgs</a>&gt;</td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IDisposable</span>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
       <div><a class="xref" href="Codaris.Common.NotifyObject.html">NotifyObject</a></div>
+      <div><span class="xref">System.IDisposable</span></div>
   </div>
   
 </article>
@@ -534,6 +629,12 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/codaris/UnderDeskBike/new/main/apiSpec/new?filename=UnderDeskBike_Bike.md&amp;value=---%0Auid%3A%20UnderDeskBike.Bike%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/codaris/UnderDeskBike/blob/main/UnderDeskBike.Device/Bike.cs/#L27" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

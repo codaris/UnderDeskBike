@@ -130,7 +130,7 @@ namespace UnderDeskBike
         public async Task WaitForConnection()
         {
             if (bikeDevice.IsConnected) return;
-            if (connectedTaskCompletionSource == null) connectedTaskCompletionSource = new TaskCompletionSource();
+            connectedTaskCompletionSource ??= new TaskCompletionSource();
             await bikeDevice.StartListening();
             await connectedTaskCompletionSource.Task;
         }

@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Projects/Other/UnderDeskBikeGit/Documentation",
+  "source_base_path": "C:/Projects/Desktop/UnderDeskBikeGit/Documentation",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Codaris.Common.ExceptionEventArgs.html",
-          "hash": "mYTLI4EDLqBDlwiDqjqPnA=="
+          "hash": "cv6F54F0TVuz1kB0n8hf1wCGxkP5Zq5ZAwPX265ZgYg="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Codaris.Common.NotifyObject.html",
-          "hash": "VBMSah0mv+X91eY4gTVRpg=="
+          "hash": "CvGV/vvqIs+0z514DGACRHYLTx09L6ev8vaYQR6s854="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Codaris.Common.ScheduledTimer.html",
-          "hash": "L7/NgaQnDPqMYdyAiXnyig=="
+          "hash": "qDswH+qktO1bQh1ttD62/kdkUM5I+thQ9nbNUeBbai8="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Codaris.Common.TaskExtensions.html",
-          "hash": "p7OjnhJMVKdqTubX1SgPeg=="
+          "hash": "vMp+Mj6v8kF7PZc1tV1GVeehnt+pG3gx3A7yk2URIKI="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Codaris.Common.Util.html",
-          "hash": "7VXnRC83AOz6jkqmlMCiZg=="
+          "hash": "cNwYGEzRXoKx+Y9uv6m1/1McTiX12U3cRKf+p2cMO+I="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Codaris.Common.html",
-          "hash": "D954dJyzoTA3LfRTLZjvBg=="
+          "hash": "y42TEC78swl5g93PuJPXgL5pU/fW9SyeIjOhfF+s2yQ="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.Bike.html",
-          "hash": "pyhtgDmeIZBKUP/2cibYjw=="
+          "hash": "zJHB05ScQF8j9tYkUDO6jECaI4MrzIzX/NQW73bAroM="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.BikeDataException.html",
-          "hash": "yquDtJ1Q1OivhehPL+M7mQ=="
+          "hash": "cHXGlcuG1pC36BtdVnLh1vLwM1r8MFpI+wmMyS1WKew="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.BikeWorkoutData.html",
-          "hash": "50S4MKycufzGCEuVuqV02Q=="
+          "hash": "VT4CgMy06LkgGsJg8E9RDsB3BIRmqD4QWXdQSPXkbOs="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.BikeWorkoutEventArgs.html",
-          "hash": "Fu+dlCqwMoOaih0I2GIRcA=="
+          "hash": "RyXRCb0FP0bJMtz3K5RY0dIkZ/s7/8aOqPtraZytWXo="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.Models.Context.html",
-          "hash": "fEQytNx9cJvviABzbsd6qw=="
+          "hash": "FXTfNaC+47P3qX+HA/3TYAwY/JTn/z2+drnfLeeDYKs="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.Models.Workout.html",
-          "hash": "jl9RUgcqjQxoIE0WQzgayg=="
+          "hash": "vHUiwr7Id/x0g/wRwbT1FdPb/p85xQj/KLzc1BDJcUc="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.Models.WorkoutEntry.html",
-          "hash": "WpGBPo9EfhCcdeCfoQhdvw=="
+          "hash": "Hs/QjTo6ZGGy5TeyWXCL737ZRaUSp8gfP0OnxedTMc0="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.Models.html",
-          "hash": "l0bHjpo248FmZpqB1ebx/A=="
+          "hash": "uvvgH6nfnxWcV5JVGZRet7pNYnW6yyF0Cj4L0KFxTTM="
         }
       },
       "is_incremental": false,
@@ -186,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.html",
-          "hash": "DGmpkLQ3zzZl06iqHFl6dw=="
+          "hash": "HAOHaj8FGCYtQf8lq+YIr+mwnEdnG+VR6rV8alHOPR0="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "7ojdWnqmV11nttVVmlLAFg=="
+          "hash": "BiyHO1+rNn+JY+f00yxXijqbLSYBaMpWrDTQzcNdfWE="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Rv6vmVncZsBTBUxmQdMtXA=="
+          "hash": "idXeZgpHb/a8ClRIUXNaiuoh8pO0ay3ItGNrHF63Ipk="
         }
       },
       "is_incremental": false,
@@ -247,7 +247,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "tB0r6jM41hCUlN2rd6z42w=="
+          "hash": "l4BwT8z2DdJ20s/S2ztkfpPKugT+049LOioOpOSzacI="
         }
       },
       "is_incremental": false,
@@ -259,7 +259,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "/dRMrgfWVW/sv4U0BIk6eA=="
+          "hash": "NIASAYutJoae+JJVC6pcjR2CQMvh9VB//CkQgQ81DM8="
         }
       },
       "is_incremental": false,
@@ -270,11 +270,11 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "details": "Cannot build incrementally because docfx version changed from 2.56.7.0 to 2.59.4.0.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "full_build_reason_code": "DocfxVersionChanged"
       },
       "processors": {
         "ConceptualDocumentProcessor": {

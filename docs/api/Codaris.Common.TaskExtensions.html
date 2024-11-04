@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TaskExtensions
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -88,26 +88,26 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">TaskExtensions</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Codaris.Common.html">Codaris.Common</a></h6>
   <h6><strong>Assembly</strong>: Codaris.Common.dll</h6>
   <h5 id="Codaris_Common_TaskExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class TaskExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class TaskExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   
   
   <a id="Codaris_Common_TaskExtensions_FireAndForget_" data-uid="Codaris.Common.TaskExtensions.FireAndForget*"></a>
-  <h4 id="Codaris_Common_TaskExtensions_FireAndForget_Task_Action_Exception__" data-uid="Codaris.Common.TaskExtensions.FireAndForget(Task,Action{Exception})">FireAndForget(Task, Action&lt;Exception&gt;)</h4>
+  <h4 id="Codaris_Common_TaskExtensions_FireAndForget_System_Threading_Tasks_Task_System_Action_System_Exception__" data-uid="Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task,System.Action{System.Exception})">FireAndForget(Task, Action&lt;Exception&gt;)</h4>
   <div class="markdown level1 summary"><p>Fires and forgets the task.  Requires an action to handle any task exceptions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void FireAndForget(this Task task, Action&lt;Exception&gt; errorHandler)</code></pre>
+    <pre><code class="lang-csharp hljs">public static async void FireAndForget(this Task task, Action&lt;Exception&gt; errorHandler)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -120,13 +120,13 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
         <td class="nowrap"><span class="parametername">task</span></td>
         <td><p>The task.</p>
 </td>
       </tr>
       <tr>
-        <td class="nowrap"><span class="xref">Action</span>&lt;<span class="xref">Exception</span>&gt;</td>
+        <td class="nowrap"><span class="xref">System.Action</span>&lt;<span class="xref">System.Exception</span>&gt;</td>
         <td class="nowrap"><span class="parametername">errorHandler</span></td>
         <td><p>The error handler.</p>
 </td>
@@ -136,12 +136,12 @@
   
   
   <a id="Codaris_Common_TaskExtensions_FireAndForget_" data-uid="Codaris.Common.TaskExtensions.FireAndForget*"></a>
-  <h4 id="Codaris_Common_TaskExtensions_FireAndForget_Task_Func_Exception_System_Boolean__" data-uid="Codaris.Common.TaskExtensions.FireAndForget(Task,Func{Exception,System.Boolean})">FireAndForget(Task, Func&lt;Exception, Boolean&gt;)</h4>
+  <h4 id="Codaris_Common_TaskExtensions_FireAndForget_System_Threading_Tasks_Task_System_Func_System_Exception_System_Boolean__" data-uid="Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task,System.Func{System.Exception,System.Boolean})">FireAndForget(Task, Func&lt;Exception, Boolean&gt;)</h4>
   <div class="markdown level1 summary"><p>Fires and forgets the task.  Requires an action to handle any task exceptions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void FireAndForget(this Task task, Func&lt;Exception, bool&gt; errorHandler)</code></pre>
+    <pre><code class="lang-csharp hljs">public static async void FireAndForget(this Task task, Func&lt;Exception, bool&gt; errorHandler)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,13 +154,13 @@
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap"><span class="xref">Task</span></td>
+        <td class="nowrap"><span class="xref">System.Threading.Tasks.Task</span></td>
         <td class="nowrap"><span class="parametername">task</span></td>
         <td><p>The task.</p>
 </td>
       </tr>
       <tr>
-        <td class="nowrap"><span class="xref">Func</span>&lt;<span class="xref">Exception</span>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td class="nowrap"><span class="xref">System.Func</span>&lt;<span class="xref">System.Exception</span>, <span class="xref">System.Boolean</span>&gt;</td>
         <td class="nowrap"><span class="parametername">errorHandler</span></td>
         <td><p>The error handler.</p>
 </td>

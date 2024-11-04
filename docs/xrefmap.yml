@@ -13,11 +13,11 @@ references:
   commentId: T:Codaris.Common.ExceptionEventArgs
   fullName: Codaris.Common.ExceptionEventArgs
   nameWithType: ExceptionEventArgs
-- uid: Codaris.Common.ExceptionEventArgs.#ctor(Exception)
+- uid: Codaris.Common.ExceptionEventArgs.#ctor(System.Exception)
   name: ExceptionEventArgs(Exception)
-  href: api/Codaris.Common.ExceptionEventArgs.html#Codaris_Common_ExceptionEventArgs__ctor_Exception_
-  commentId: M:Codaris.Common.ExceptionEventArgs.#ctor(Exception)
-  fullName: Codaris.Common.ExceptionEventArgs.ExceptionEventArgs(Exception)
+  href: api/Codaris.Common.ExceptionEventArgs.html#Codaris_Common_ExceptionEventArgs__ctor_System_Exception_
+  commentId: M:Codaris.Common.ExceptionEventArgs.#ctor(System.Exception)
+  fullName: Codaris.Common.ExceptionEventArgs.ExceptionEventArgs(System.Exception)
   nameWithType: ExceptionEventArgs.ExceptionEventArgs(Exception)
 - uid: Codaris.Common.ExceptionEventArgs.#ctor*
   name: ExceptionEventArgs
@@ -84,13 +84,13 @@ references:
   isSpec: "True"
   fullName: Codaris.Common.NotifyObject.SetProperty
   nameWithType: NotifyObject.SetProperty
-- uid: Codaris.Common.NotifyObject.SetProperty``1(``0@,``0,Action{``0},System.String)
+- uid: Codaris.Common.NotifyObject.SetProperty``1(``0@,``0,System.Action{``0},System.String)
   name: SetProperty<T>(ref T, T, Action<T>, String)
-  href: api/Codaris.Common.NotifyObject.html#Codaris_Common_NotifyObject_SetProperty__1___0____0_Action___0__System_String_
-  commentId: M:Codaris.Common.NotifyObject.SetProperty``1(``0@,``0,Action{``0},System.String)
+  href: api/Codaris.Common.NotifyObject.html#Codaris_Common_NotifyObject_SetProperty__1___0____0_System_Action___0__System_String_
+  commentId: M:Codaris.Common.NotifyObject.SetProperty``1(``0@,``0,System.Action{``0},System.String)
   name.vb: SetProperty(Of T)(ByRef T, T, Action(Of T), String)
-  fullName: Codaris.Common.NotifyObject.SetProperty<T>(ref T, T, Action<T>, System.String)
-  fullName.vb: Codaris.Common.NotifyObject.SetProperty(Of T)(ByRef T, T, Action(Of T), System.String)
+  fullName: Codaris.Common.NotifyObject.SetProperty<T>(ref T, T, System.Action<T>, System.String)
+  fullName.vb: Codaris.Common.NotifyObject.SetProperty(Of T)(ByRef T, T, System.Action(Of T), System.String)
   nameWithType: NotifyObject.SetProperty<T>(ref T, T, Action<T>, String)
   nameWithType.vb: NotifyObject.SetProperty(Of T)(ByRef T, T, Action(Of T), String)
 - uid: Codaris.Common.ScheduledTimer
@@ -195,22 +195,22 @@ references:
   commentId: T:Codaris.Common.TaskExtensions
   fullName: Codaris.Common.TaskExtensions
   nameWithType: TaskExtensions
-- uid: Codaris.Common.TaskExtensions.FireAndForget(Task,Action{Exception})
+- uid: Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task,System.Action{System.Exception})
   name: FireAndForget(Task, Action<Exception>)
-  href: api/Codaris.Common.TaskExtensions.html#Codaris_Common_TaskExtensions_FireAndForget_Task_Action_Exception__
-  commentId: M:Codaris.Common.TaskExtensions.FireAndForget(Task,Action{Exception})
+  href: api/Codaris.Common.TaskExtensions.html#Codaris_Common_TaskExtensions_FireAndForget_System_Threading_Tasks_Task_System_Action_System_Exception__
+  commentId: M:Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task,System.Action{System.Exception})
   name.vb: FireAndForget(Task, Action(Of Exception))
-  fullName: Codaris.Common.TaskExtensions.FireAndForget(Task, Action<Exception>)
-  fullName.vb: Codaris.Common.TaskExtensions.FireAndForget(Task, Action(Of Exception))
+  fullName: Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task, System.Action<System.Exception>)
+  fullName.vb: Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task, System.Action(Of System.Exception))
   nameWithType: TaskExtensions.FireAndForget(Task, Action<Exception>)
   nameWithType.vb: TaskExtensions.FireAndForget(Task, Action(Of Exception))
-- uid: Codaris.Common.TaskExtensions.FireAndForget(Task,Func{Exception,System.Boolean})
+- uid: Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task,System.Func{System.Exception,System.Boolean})
   name: FireAndForget(Task, Func<Exception, Boolean>)
-  href: api/Codaris.Common.TaskExtensions.html#Codaris_Common_TaskExtensions_FireAndForget_Task_Func_Exception_System_Boolean__
-  commentId: M:Codaris.Common.TaskExtensions.FireAndForget(Task,Func{Exception,System.Boolean})
+  href: api/Codaris.Common.TaskExtensions.html#Codaris_Common_TaskExtensions_FireAndForget_System_Threading_Tasks_Task_System_Func_System_Exception_System_Boolean__
+  commentId: M:Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task,System.Func{System.Exception,System.Boolean})
   name.vb: FireAndForget(Task, Func(Of Exception, Boolean))
-  fullName: Codaris.Common.TaskExtensions.FireAndForget(Task, Func<Exception, System.Boolean>)
-  fullName.vb: Codaris.Common.TaskExtensions.FireAndForget(Task, Func(Of Exception, System.Boolean))
+  fullName: Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task, System.Func<System.Exception, System.Boolean>)
+  fullName.vb: Codaris.Common.TaskExtensions.FireAndForget(System.Threading.Tasks.Task, System.Func(Of System.Exception, System.Boolean))
   nameWithType: TaskExtensions.FireAndForget(Task, Func<Exception, Boolean>)
   nameWithType.vb: TaskExtensions.FireAndForget(Task, Func(Of Exception, Boolean))
 - uid: Codaris.Common.TaskExtensions.FireAndForget*
@@ -226,13 +226,13 @@ references:
   commentId: T:Codaris.Common.Util
   fullName: Codaris.Common.Util
   nameWithType: Util
-- uid: Codaris.Common.Util.ByteArrayEqual(ReadOnlySpan{System.Byte},ReadOnlySpan{System.Byte})
+- uid: Codaris.Common.Util.ByteArrayEqual(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})
   name: ByteArrayEqual(ReadOnlySpan<Byte>, ReadOnlySpan<Byte>)
-  href: api/Codaris.Common.Util.html#Codaris_Common_Util_ByteArrayEqual_ReadOnlySpan_System_Byte__ReadOnlySpan_System_Byte__
-  commentId: M:Codaris.Common.Util.ByteArrayEqual(ReadOnlySpan{System.Byte},ReadOnlySpan{System.Byte})
+  href: api/Codaris.Common.Util.html#Codaris_Common_Util_ByteArrayEqual_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__
+  commentId: M:Codaris.Common.Util.ByteArrayEqual(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})
   name.vb: ByteArrayEqual(ReadOnlySpan(Of Byte), ReadOnlySpan(Of Byte))
-  fullName: Codaris.Common.Util.ByteArrayEqual(ReadOnlySpan<System.Byte>, ReadOnlySpan<System.Byte>)
-  fullName.vb: Codaris.Common.Util.ByteArrayEqual(ReadOnlySpan(Of System.Byte), ReadOnlySpan(Of System.Byte))
+  fullName: Codaris.Common.Util.ByteArrayEqual(System.ReadOnlySpan<System.Byte>, System.ReadOnlySpan<System.Byte>)
+  fullName.vb: Codaris.Common.Util.ByteArrayEqual(System.ReadOnlySpan(Of System.Byte), System.ReadOnlySpan(Of System.Byte))
   nameWithType: Util.ByteArrayEqual(ReadOnlySpan<Byte>, ReadOnlySpan<Byte>)
   nameWithType.vb: Util.ByteArrayEqual(ReadOnlySpan(Of Byte), ReadOnlySpan(Of Byte))
 - uid: Codaris.Common.Util.ByteArrayEqual*
@@ -254,11 +254,11 @@ references:
   commentId: T:UnderDeskBike.Bike
   fullName: UnderDeskBike.Bike
   nameWithType: Bike
-- uid: UnderDeskBike.Bike.#ctor(TextWriter)
+- uid: UnderDeskBike.Bike.#ctor(System.IO.TextWriter)
   name: Bike(TextWriter)
-  href: api/UnderDeskBike.Bike.html#UnderDeskBike_Bike__ctor_TextWriter_
-  commentId: M:UnderDeskBike.Bike.#ctor(TextWriter)
-  fullName: UnderDeskBike.Bike.Bike(TextWriter)
+  href: api/UnderDeskBike.Bike.html#UnderDeskBike_Bike__ctor_System_IO_TextWriter_
+  commentId: M:UnderDeskBike.Bike.#ctor(System.IO.TextWriter)
+  fullName: UnderDeskBike.Bike.Bike(System.IO.TextWriter)
   nameWithType: Bike.Bike(TextWriter)
 - uid: UnderDeskBike.Bike.#ctor*
   name: Bike
@@ -445,11 +445,11 @@ references:
   commentId: T:UnderDeskBike.BikeDataException
   fullName: UnderDeskBike.BikeDataException
   nameWithType: BikeDataException
-- uid: UnderDeskBike.BikeDataException.#ctor(SerializationInfo,StreamingContext)
+- uid: UnderDeskBike.BikeDataException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
   name: BikeDataException(SerializationInfo, StreamingContext)
-  href: api/UnderDeskBike.BikeDataException.html#UnderDeskBike_BikeDataException__ctor_SerializationInfo_StreamingContext_
-  commentId: M:UnderDeskBike.BikeDataException.#ctor(SerializationInfo,StreamingContext)
-  fullName: UnderDeskBike.BikeDataException.BikeDataException(SerializationInfo, StreamingContext)
+  href: api/UnderDeskBike.BikeDataException.html#UnderDeskBike_BikeDataException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:UnderDeskBike.BikeDataException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  fullName: UnderDeskBike.BikeDataException.BikeDataException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
   nameWithType: BikeDataException.BikeDataException(SerializationInfo, StreamingContext)
 - uid: UnderDeskBike.BikeDataException.#ctor(System.String)
   name: BikeDataException(String)
@@ -457,11 +457,11 @@ references:
   commentId: M:UnderDeskBike.BikeDataException.#ctor(System.String)
   fullName: UnderDeskBike.BikeDataException.BikeDataException(System.String)
   nameWithType: BikeDataException.BikeDataException(String)
-- uid: UnderDeskBike.BikeDataException.#ctor(System.String,Exception)
+- uid: UnderDeskBike.BikeDataException.#ctor(System.String,System.Exception)
   name: BikeDataException(String, Exception)
-  href: api/UnderDeskBike.BikeDataException.html#UnderDeskBike_BikeDataException__ctor_System_String_Exception_
-  commentId: M:UnderDeskBike.BikeDataException.#ctor(System.String,Exception)
-  fullName: UnderDeskBike.BikeDataException.BikeDataException(System.String, Exception)
+  href: api/UnderDeskBike.BikeDataException.html#UnderDeskBike_BikeDataException__ctor_System_String_System_Exception_
+  commentId: M:UnderDeskBike.BikeDataException.#ctor(System.String,System.Exception)
+  fullName: UnderDeskBike.BikeDataException.BikeDataException(System.String, System.Exception)
   nameWithType: BikeDataException.BikeDataException(String, Exception)
 - uid: UnderDeskBike.BikeDataException.#ctor*
   name: BikeDataException
@@ -711,11 +711,11 @@ references:
   commentId: T:UnderDeskBike.Models.Context
   fullName: UnderDeskBike.Models.Context
   nameWithType: Context
-- uid: UnderDeskBike.Models.Context.OnConfiguring(DbContextOptionsBuilder)
+- uid: UnderDeskBike.Models.Context.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
   name: OnConfiguring(DbContextOptionsBuilder)
-  href: api/UnderDeskBike.Models.Context.html#UnderDeskBike_Models_Context_OnConfiguring_DbContextOptionsBuilder_
-  commentId: M:UnderDeskBike.Models.Context.OnConfiguring(DbContextOptionsBuilder)
-  fullName: UnderDeskBike.Models.Context.OnConfiguring(DbContextOptionsBuilder)
+  href: api/UnderDeskBike.Models.Context.html#UnderDeskBike_Models_Context_OnConfiguring_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_
+  commentId: M:UnderDeskBike.Models.Context.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+  fullName: UnderDeskBike.Models.Context.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
   nameWithType: Context.OnConfiguring(DbContextOptionsBuilder)
 - uid: UnderDeskBike.Models.Context.OnConfiguring*
   name: OnConfiguring

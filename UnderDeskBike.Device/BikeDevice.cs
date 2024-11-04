@@ -127,6 +127,7 @@ namespace UnderDeskBike
 
                 // Create device
                 var deviceInfo = await GetBluetoothDeviceInfo();
+                if (deviceInfo == null) throw new Exception("Under desk bluetooth device not found");
                 device = await BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
                 device.ConnectionStatusChanged += Device_ConnectionStatusChanged;
 
