@@ -102,7 +102,7 @@ namespace UnderDeskBike.ViewModels
         private bool _showInTaskbar = false;
 
         /// <summary>The bike device.</summary>
-        private readonly Bike bike = new Bike();
+        private readonly Bike bike = new();
 
         /// <summary>
         /// The current workout.
@@ -117,10 +117,10 @@ namespace UnderDeskBike.ViewModels
         /// <summary>
         /// The paused timer.
         /// </summary>
-        private readonly Timer pausedTimer = new Timer(30_000);
+        private readonly Timer pausedTimer = new(30_000);
 
         /// <summary>The daily timer to reset the stats.</summary>
-        private readonly ScheduledTimer dailyTimer = new ScheduledTimer(0, 0, 0);
+        private readonly ScheduledTimer dailyTimer = new(0, 0, 0);
 
         /// <summary>
         /// The today distance KMS.

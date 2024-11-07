@@ -24,7 +24,7 @@ namespace UnderDeskBike
         /// <summary>
         /// The bike data log.
         /// </summary>
-        private static readonly StreamWriter FileLog = new StreamWriter("datalog.txt", append: true);
+        private static readonly StreamWriter FileLog = new("datalog.txt", append: true);
 
         /// <summary>
         /// Defines the entry point of the application.

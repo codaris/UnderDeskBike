@@ -25,7 +25,7 @@ namespace Codaris.Wpf
         /// <summary>
         /// The propagated properties.
         /// </summary>
-        private readonly ConditionalWeakTable<INotifyPropertyChanged, Dictionary<string, List<string>>> propagatedProperties = new ConditionalWeakTable<INotifyPropertyChanged, Dictionary<string, List<string>>>();
+        private readonly ConditionalWeakTable<INotifyPropertyChanged, Dictionary<string, List<string>>> propagatedProperties = [];
 
         /// <summary>
         /// Runs the on UI thread.
@@ -56,13 +56,13 @@ namespace Codaris.Wpf
         /// <param name="instance">The instance.</param>
         /// <param name="instancePropertyName">Name of the instance property.</param>
         /// <param name="localProperties">The local properties.</param>
-        protected internal void PropagatePropertyChanged(INotifyPropertyChanged instance, string instancePropertyName, params string[] localProperties)
+        internal protected void PropagatePropertyChanged(INotifyPropertyChanged instance, string instancePropertyName, params string[] localProperties)
         {
             Contract.Requires(instance != null);
             var instanceProperties = propagatedProperties.GetOrCreateValue(instance);
-            if (!instanceProperties.TryGetValue(instancePropertyName, out List<string> thisProperties))
+            if (!instanceProperties.TryGetValue(instancePropertyName, out var thisProperties))
             {
-                thisProperties = new List<string>();
+                thisProperties = [];
                 instanceProperties.Add(instancePropertyName, thisProperties);
             }
 
@@ -78,9 +78,9 @@ namespace Codaris.Wpf
         /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
         private void PropagatePropertyChangeEventHandler(object sender, PropertyChangedEventArgs e)
         {
-            if (!propagatedProperties.TryGetValue((INotifyPropertyChanged)sender, out Dictionary<string, List<string>> fields)) return;
-            if (!fields.ContainsKey(e.PropertyName)) return;
-            foreach (var propertyName in fields[e.PropertyName]) OnPropertyChanged(propertyName);
+            if (!propagatedProperties.TryGetValue((INotifyPropertyChanged)sender, out var fields)) return;
+            if (!fields.TryGetValue(e.PropertyName, out var value)) return;
+            foreach (var propertyName in value) OnPropertyChanged(propertyName);
         }
     }
 }

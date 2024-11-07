@@ -18,7 +18,7 @@ namespace Codaris.Common
     public class ScheduledTimer : IDisposable
     {
         /// <summary>The timer.</summary>
-        private readonly Timer timer = new Timer();
+        private readonly Timer timer = new();
 
         /// <summary>The trigger time.</summary>
         private readonly TimeSpan triggerTime;
@@ -40,7 +40,7 @@ namespace Codaris.Common
         public ScheduledTimer(int hour, int minute, int second)
         {
             triggerTime = new TimeSpan(hour, minute, second);
-            timer.Elapsed += Timer_Elapsed;
+            timer.Elapsed += this.Timer_Elapsed;
             timer.Interval = CalculateInterval(triggerTime);
         }
 
@@ -66,10 +66,10 @@ namespace Codaris.Common
         /// <returns>The calculated interval in milliseconds.</returns>
         private static double CalculateInterval(TimeSpan triggerTime)
         {
-            DateTime now = DateTime.Now;
-            DateTime triggerData = new DateTime(now.Year, now.Month, now.Day, triggerTime.Hours, triggerTime.Minutes, triggerTime.Seconds);
+            var now = DateTime.Now;
+            var triggerData = new DateTime(now.Year, now.Month, now.Day, triggerTime.Hours, triggerTime.Minutes, triggerTime.Seconds);
             if (now > triggerData) triggerData = triggerData.AddDays(1);
-            TimeSpan interval = triggerData - now;
+            var interval = triggerData - now;
             if (interval <= TimeSpan.Zero) interval = TimeSpan.Zero;
             return interval.TotalMilliseconds;
         }
@@ -113,11 +113,10 @@ namespace Codaris.Common
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:Elements should be ordered by access", Justification = "Dispose goes at end of class")]
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
+            this.Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
     }

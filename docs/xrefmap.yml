@@ -445,12 +445,6 @@ references:
   commentId: T:UnderDeskBike.BikeDataException
   fullName: UnderDeskBike.BikeDataException
   nameWithType: BikeDataException
-- uid: UnderDeskBike.BikeDataException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  name: BikeDataException(SerializationInfo, StreamingContext)
-  href: api/UnderDeskBike.BikeDataException.html#UnderDeskBike_BikeDataException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
-  commentId: M:UnderDeskBike.BikeDataException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  fullName: UnderDeskBike.BikeDataException.BikeDataException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
-  nameWithType: BikeDataException.BikeDataException(SerializationInfo, StreamingContext)
 - uid: UnderDeskBike.BikeDataException.#ctor(System.String)
   name: BikeDataException(String)
   href: api/UnderDeskBike.BikeDataException.html#UnderDeskBike_BikeDataException__ctor_System_String_

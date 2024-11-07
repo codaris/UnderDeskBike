@@ -55,14 +55,14 @@ namespace UnderDeskBike.Models
         /// <summary>
         /// Gets the entries.
         /// </summary>
-        public virtual List<WorkoutEntry> Entries { get; } = new List<WorkoutEntry>();
+        public virtual List<WorkoutEntry> Entries { get; } = [];
 
         /// <summary>
         /// Calculates the averages from the entries.
         /// </summary>
         public void AveragesFromEntries()
         {
-            if (!Entries.Any()) return;
+            if (Entries.Count == 0) return;
             AverageRotationsPerMinute = Entries.Average(e => e.RotationsPerMinute);
             AverageSpeedKph = Entries.Average(e => e.SpeedKph);
         }

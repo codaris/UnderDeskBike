@@ -76,7 +76,7 @@ csharp_style_expression_bodied_accessors = true:suggestion
 #prefer block bodies for constructors
 csharp_style_expression_bodied_constructors = false:suggestion
 #prefer block bodies for methods
-csharp_style_expression_bodied_methods = false:suggestion
+csharp_style_expression_bodied_methods = false:none
 #prefer block bodies for operators
 csharp_style_expression_bodied_operators = false:suggestion
 #prefer expression-bodied members for properties
@@ -137,3 +137,6 @@ dotnet_style_qualification_for_field = false:suggestion
 dotnet_style_qualification_for_method = true:suggestion
 #prefer properties not to be prefaced with this. or Me. in Visual Basic
 dotnet_style_qualification_for_property = false:suggestion
+
+# IDE0022: Use block body for method
+dotnet_diagnostic.IDE0022.severity = none

@@ -34,7 +34,7 @@ namespace UnderDeskBike
         /// <summary>
         /// The result completion source.
         /// </summary>
-        private readonly TaskCompletionSource<T> resultCompletionSource = new TaskCompletionSource<T>();
+        private readonly TaskCompletionSource<T> resultCompletionSource = new();
 
         /// <summary>
         /// Sends this command using the specified send function.
