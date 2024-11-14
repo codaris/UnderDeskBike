@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnderDeskBike", "UnderDeskBike\UnderDeskBike.csproj", "{8A61F6C3-0711-4BCD-B945-8220DB972C13}"
 EndProject
@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		StyleCopAnalyzers.ruleset = StyleCopAnalyzers.ruleset
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentation", "Documentation\Documentation.csproj", "{1263176F-A88D-46B8-979D-585A208D419D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation", "Documentation\Documentation.csproj", "{1263176F-A88D-46B8-979D-585A208D419D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "UnderDeskBikeSetup", "UnderDeskBikeSetup\UnderDeskBikeSetup.vdproj", "{669EE47F-64CC-4DA3-8507-C3CD2BAC730A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,8 @@ Global
 		{1263176F-A88D-46B8-979D-585A208D419D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1263176F-A88D-46B8-979D-585A208D419D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1263176F-A88D-46B8-979D-585A208D419D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669EE47F-64CC-4DA3-8507-C3CD2BAC730A}.Debug|Any CPU.ActiveCfg = Debug
+		{669EE47F-64CC-4DA3-8507-C3CD2BAC730A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
