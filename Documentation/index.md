@@ -2,57 +2,57 @@
 
 ![](images/header.png)
 
-Due to COVID, I haven't been getting my usual amount of exercise this year.  To help with that, I decided to take a chance and order an under desk exercise bike to get some more cardio.  The bike I bought is decent: good tension, doesn't move around, is very quiet, and has Bluetooth connectivity for tracking workouts.  
+Due to COVID, I haven’t been getting my usual amount of exercise this year. To help with that, I decided to take a chance and order an under-desk exercise bike to get some extra cardio. The bike I bought is decent: it has good tension, stays in place, operates quietly, and offers Bluetooth connectivity for tracking workouts.
 
-If you're thinking of getting one of these under desk bikes I wouldn't automatically recommend it.  If your desk is normal sized you will bump your knees on it.  But my desk is designed to be used with a keyboard tray and I hate keyboard trays.  So instead my keyboard is on the top of the desk, my chair is raised up, and I use a footrest.  All this means that my desk is actually the perfect height for pedaling.
+If you’re considering getting one of these under-desk bikes, I wouldn’t automatically recommend it. With a standard desk, your knees will likely bump against it. However, my desk is designed for use with a keyboard tray, which I dislike. Instead, I keep my keyboard on top of the desk, raise my chair, and use a footrest. This setup makes my desk a good height for pedaling.
 
-Bluetooth connectivity is important to me; being able to see and record speed and distance is a big motivator.  For connectivity there is unsurprisingly a phone app.  It's not a good app.  It feels unpolished and gets mediocre reviews.  And, of course, it also requires a signup and tries to upsell you on a subscription for classes.  I can ignore all that.  But, sitting at my workstation, I don't want to take out my phone and go through 5 steps every time I want to workout.  Nor do I want to keep my phone on and propped up on my desk for long periods of time.  Lastly, I very much did not want all my workout data locked away in this app.
+Bluetooth connectivity is important to me; being able to view and record speed and distance is a big motivator. Unsurprisingly, the bike comes with a companion phone app. It’s not a great app - it feels unpolished, has mediocre reviews, requires an account, and tries to upsell you on a subscription for classes. I can overlook all that, but sitting at my workstation, I don’t want to pull out my phone and navigate through several steps every time I want to work out. Nor do I want to leave my phone on and propped up on my desk for long periods. Lastly, I didn’t want all my workout data locked away in this app.
 
-The solution was obvious -- build my own desktop app! 
+The solution was obvious - build my own desktop app! 
 
 ## The Project
 
-I was inspired by this article: [Unbricking a $2,000 Bike With a $10 Raspberry Pi](https://ptx2.net/posts/unbricking-a-bike-with-a-raspberry-pi/).  I figured my under desk bike probably worked in a similar way and if I could connect to it from my desktop I could write my own application.
+I was inspired by this article: [Unbricking a $2,000 Bike With a $10 Raspberry Pi](https://ptx2.net/posts/unbricking-a-bike-with-a-raspberry-pi/).  I figured my under-desk bike probably worked in a similar way, and if I could connect to it from my desktop, I could write my own application.
 
 #### Objectives
 
-* Display, in real time, the workout data in a small window on the desktop.
+* Display workout data in real time in a small window on the desktop.
 * Record the workout data to a SQLite database for analysis, goal setting, and motivation.
-* If possible, have the app start and stop automatically whenever I start pedaling.
+* Automatically start and stop the app whenever I start pedaling, if possible.
 
 #### Complications
 
 * My desktop didn't have Bluetooth
 * Zero experience working with Bluetooth LE
 
-I solved the first complication by getting a USB dongle off of Amazon.  The second complication would be solved as I went.
+I solved the first issue by purchasing a USB Bluetooth dongle from Amazon. The second issue was something I would tackle with this project.
 
 ## Step 1 - Research
 
-The first task was to google for as much information as possible.  This lead to a piece of software called [nRF Connect](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp).  This Android software shows information about all your Bluetooth devices, allows you connect to them, show you all the available profiles, and log data.  With this I learned the bike uses a chip called [Nordic UART](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/include/bluetooth/services/nus.html).  This is basically a serial connection at one end and Bluetooth on the other.  This was great news - it should mean that the bike is just streaming bytes.  
+The first step was to search for as much information as possible. This led me to a piece of software called [nRF Connect](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp).  This Android app provides details about nearby Bluetooth devices, lets you connect to them, displays available profiles, and logs data. Using it, I learned that the bike uses a chip called [Nordic UART](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/include/bluetooth/services/nus.html), which essentially provides a serial connection over Bluetooth. This was great news - it suggested the bike was simply streaming bytes.
 
-However, connecting to it with nRF connect didn't immediately provide me with any data from the bike.  It was connected, I was subscribed to changes, but no data was being sent.  This would require more work.
+However, connecting with nRF Connect didn’t immediately provide any data. While I could connect and subscribe to changes, no data was being sent. This required further investigation.
 
-So the next step was to run the app and log all the Bluetooth traffic to see what was happening.  More googling sent me to [this article](https://medium.com/@charlie.d.anderson/how-to-get-the-bluetooth-host-controller-interface-logs-from-a-modern-android-phone-d23bde00b9fa) that describes enabling the Bluetooth log on my phone and downloading it for analysis.  I enabled screen recording on my phone, enabled Bluetooth logging, did a couple of runs on the bike, and then downloaded the logs.  
+The next step was to run the app and log all Bluetooth traffic to understand what was happening. After some more research, I found [this article](https://medium.com/@charlie.d.anderson/how-to-get-the-bluetooth-host-controller-interface-logs-from-a-modern-android-phone-d23bde00b9fa), which explains how to enable Bluetooth logging on an Android phone and download the logs for analysis. I enabled screen recording and Bluetooth logging on my phone, did a couple of workouts, and downloaded the logs.
 
-Using Wireshark and comparing it with my recorded video I got see how the app communicated with the bike.  The app would send a command packet and the bike would respond with one or more packets.  The app would send a single command continuously when the workout started and the bike would respond with packets of similar looking data.
+Using Wireshark and comparing the logs with my recorded video, I discovered how the app communicates with the bike. The app sends a command packet, and the bike responds with one or more packets. During a workout, the app repeatedly sends a specific command, and the bike responds with data packets.
 
 ## Step 2 - Connecting to the Bike
 
-Using the logs and Wireshark, I determined that the app sends 6 different commands.  So the next step was to create a simple console application that could connect to bike, send the commands, and receive the results.  I needed to see if I could, at minimum, replicate the activity of the app using my own software on the desktop.
+From the logs and Wireshark analysis, I identified six distinct commands sent by the app. My next task was to create a simple console application to connect to the bike, send these commands, and receive responses. This would test if I could replicate the app’s behavior on my desktop.
 
-The platform of choice for this adventure was .NET 5.0 on Windows.  I needed access to the Windows Runtime for the Bluetooth API in Windows.  I discovered that [this is extremely easy to do](https://docs.microsoft.com/en-us/windows/apps/desktop/modernize/desktop-to-uwp-enhance).  
+I chose .NET 5.0 on Windows for this project, as it provides access to the Windows Runtime Bluetooth API. [Integrating this API is straightforward](https://docs.microsoft.com/en-us/windows/apps/desktop/modernize/desktop-to-uwp-enhance).
 
 ## Step 3 - Interpreting the Data
 
-The first command the app sends I will call the `Connect` command.  This command must be sent before any other commands.  As soon as you send this command, you must send commands at a minimum of one second intervals or the bike will close the connection.
+The first command sent by the app, which I called the `Connect` command, must be sent before any others. After sending this command, subsequent commands must be sent at intervals of no more than one second, or the bike disconnects.
 
 ```none
 Start Command:  f9 d0 00 c9
 Response:       f9 e0 00 d9
 ```
 
-The second command the app sends I call the `Hold` command.  Since you must send commands at regular intervals once you've connected, sending this command appears to just keep the connection open.  The bike responds with 2 packets of identical data every time this command is sent.
+The next command, which I called the `Hold` command, appears to keep the connection alive. The bike responds with two identical packets each time this command is sent.
 
 ```none
 Hold Command:   f9 d1 05 02 00 00 00 00 d1 
@@ -60,7 +60,7 @@ Response #1:    f9 e1 10 07 00 00 00 00 00 00 02 00 03 37 00 00 2a
 Response #2:    f9 e2 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 eb
 ```
 
-The 3rd and 4th commands I just call `Info1` and `Info2`.  These commands are sent by the app once per connection and they always return the same information.  This could be model or calibration information.
+Next were two one-time commands, which I named `Info1` and `Info2`. These likely provide model or calibration data.
 
 ```none
 Info1 Command:  f9 d3 0d 01 00 00 2c 00 00 3c 00 a0 00 00 00 00 e2 00 00 00
@@ -71,7 +71,7 @@ Info2 Command:  f9 d4 0f 02 00 00 00 00 00 00 00 00 00 00 00 00 1f 0f 0c 00
 Response:       f9 e4 02 00 00 df
 ```
 
-At this point we can see the pattern emerge.  Every command and every response starts with the byte `F9`.  The next byte contains the command or response type; the high nibble is `D` for commands and `E` for responses.  The next byte is the length of the packet not including this header.  The next byte after that appears to be some kind of checksum.  
+At this point we can see the pattern emerge.  Every command and response starts with the byte `F9`.  The next byte contains the command or response type; the high nibble is `D` for commands and `E` for responses.  The next byte is the length of the packet not including this header.  The next byte after that appears to be some kind of checksum.  
 
 The most interesting commands come next.  I call these the `Start Workout` and `Continue Workout` commands.  The first command is sent when you start the workout and then app continuously sends the second command to sample data from the bike.
 
@@ -134,7 +134,7 @@ With these observations, I decided I only needed 3 commands:  The `Connect` comm
 
 ## Step 4 - Putting It All Together
 
-The final step was re-arranging the work I had done into a [consistent API](api/) and then create a WPF application for the user interface.  This part wasn't too hard; this is the perfect type of application for MVVM.  I also used Entity Framework Core to very quickly put together the SQLite storage for workout information.
+The final step was to organize my work into a [consistent API](api/) and then create a WPF application for the user interface.  This type of application is perfect for MVVM. I used Entity Framework Core to quickly implement SQLite storage for workout data.
 
 ![](images/screenshot.png)
 
