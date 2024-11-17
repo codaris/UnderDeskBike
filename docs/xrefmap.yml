@@ -476,32 +476,6 @@ references:
   commentId: T:UnderDeskBike.BikeWorkoutEventArgs
   fullName: UnderDeskBike.BikeWorkoutEventArgs
   nameWithType: BikeWorkoutEventArgs
-- uid: UnderDeskBike.BikeWorkoutEventArgs.#ctor(UnderDeskBike.BikeWorkoutData)
-  name: BikeWorkoutEventArgs(BikeWorkoutData)
-  href: api/UnderDeskBike.BikeWorkoutEventArgs.html#UnderDeskBike_BikeWorkoutEventArgs__ctor_UnderDeskBike_BikeWorkoutData_
-  commentId: M:UnderDeskBike.BikeWorkoutEventArgs.#ctor(UnderDeskBike.BikeWorkoutData)
-  fullName: UnderDeskBike.BikeWorkoutEventArgs.BikeWorkoutEventArgs(UnderDeskBike.BikeWorkoutData)
-  nameWithType: BikeWorkoutEventArgs.BikeWorkoutEventArgs(BikeWorkoutData)
-- uid: UnderDeskBike.BikeWorkoutEventArgs.#ctor*
-  name: BikeWorkoutEventArgs
-  href: api/UnderDeskBike.BikeWorkoutEventArgs.html#UnderDeskBike_BikeWorkoutEventArgs__ctor_
-  commentId: Overload:UnderDeskBike.BikeWorkoutEventArgs.#ctor
-  isSpec: "True"
-  fullName: UnderDeskBike.BikeWorkoutEventArgs.BikeWorkoutEventArgs
-  nameWithType: BikeWorkoutEventArgs.BikeWorkoutEventArgs
-- uid: UnderDeskBike.BikeWorkoutEventArgs.Data
-  name: Data
-  href: api/UnderDeskBike.BikeWorkoutEventArgs.html#UnderDeskBike_BikeWorkoutEventArgs_Data
-  commentId: P:UnderDeskBike.BikeWorkoutEventArgs.Data
-  fullName: UnderDeskBike.BikeWorkoutEventArgs.Data
-  nameWithType: BikeWorkoutEventArgs.Data
-- uid: UnderDeskBike.BikeWorkoutEventArgs.Data*
-  name: Data
-  href: api/UnderDeskBike.BikeWorkoutEventArgs.html#UnderDeskBike_BikeWorkoutEventArgs_Data_
-  commentId: Overload:UnderDeskBike.BikeWorkoutEventArgs.Data
-  isSpec: "True"
-  fullName: UnderDeskBike.BikeWorkoutEventArgs.Data
-  nameWithType: BikeWorkoutEventArgs.Data
 - uid: UnderDeskBike.Models
   name: UnderDeskBike.Models
   href: api/UnderDeskBike.Models.html
