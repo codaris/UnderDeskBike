@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>UnderDeskBike</RootNamespace>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

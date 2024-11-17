@@ -30,7 +30,7 @@ namespace UnderDeskBike.Views
     public partial class MainWindow : Window
     {
         /// <summary>Gets the show command.</summary>
-        public ICommand ShowCommand { get; } = null;
+        public ICommand ShowCommand { get; }
 
         /// <summary>
         /// Gets the view model.
@@ -55,7 +55,7 @@ namespace UnderDeskBike.Views
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ViewModel_StatusChanged(object sender, EventArgs e)
+        private void ViewModel_StatusChanged(object? sender, EventArgs e)
         {
             // Show the window on status change
             Dispatcher.InvokeAsync(() => Show());
@@ -66,7 +66,7 @@ namespace UnderDeskBike.Views
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="Codaris.Common.ExceptionEventArgs"/> instance containing the event data.</param>
-        private void ViewModel_Error(object sender, Codaris.Common.ExceptionEventArgs e)
+        private void ViewModel_Error(object? sender, Codaris.Common.ExceptionEventArgs e)
         {
             e.IsHandled = ErrorHandler(e.Exception);
         }
@@ -76,7 +76,7 @@ namespace UnderDeskBike.Views
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="MouseButtonEventArgs"/> instance containing the event data.</param>
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDown(object? sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left) this.DragMove();
         }
@@ -123,7 +123,7 @@ namespace UnderDeskBike.Views
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="UnobservedTaskExceptionEventArgs"/> instance containing the event data.</param>
-        private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
             e.SetObserved();
             if (e.Exception.Flatten().InnerExceptions.All(ex => ex is TaskCanceledException)) return;

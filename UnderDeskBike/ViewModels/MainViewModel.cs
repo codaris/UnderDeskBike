@@ -28,12 +28,12 @@ namespace UnderDeskBike.ViewModels
         /// <summary>
         /// Gets the pause command.
         /// </summary>
-        public ICommand StartCommand { get; } = null;
+        public ICommand StartCommand { get; }
 
         /// <summary>
         /// Gets the stop command.
         /// </summary>
-        public ICommand StopCommand { get; } = null;
+        public ICommand StopCommand { get; } 
 
         /// <summary>
         /// Gets the rotations per minute.
@@ -107,12 +107,12 @@ namespace UnderDeskBike.ViewModels
         /// <summary>
         /// The current workout.
         /// </summary>
-        private Workout currentWorkout = null;
+        private Workout? currentWorkout = null;
 
         /// <summary>
         /// The workout database context.
         /// </summary>
-        private Context context = null;
+        private Context context;
 
         /// <summary>
         /// The paused timer.
@@ -130,12 +130,12 @@ namespace UnderDeskBike.ViewModels
         /// <summary>
         /// Occurs when error is triggered.
         /// </summary>
-        public event EventHandler<ExceptionEventArgs> Error;
+        public event EventHandler<ExceptionEventArgs>? Error;
 
         /// <summary>
         /// Occurs when status changed and the window should update
         /// </summary>
-        public event EventHandler StatusChanged;
+        public event EventHandler? StatusChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainViewModel"/> class.
@@ -145,7 +145,7 @@ namespace UnderDeskBike.ViewModels
             context = new Context();
             context.Database.Migrate();
             pausedTimer.Elapsed += PausedTimer_Elapsed;
-            StartCommand = new RelayCommand(() => bike.StartWorkout(500).FireAndForget(RaiseErrorEvent), () => !bike.IsWorkoutRunning);
+            StartCommand = new RelayCommand(() => bike.StartWorkout(500).FireAndForget(RaiseErrorEvent), () => !bike.IsWorkoutRunning && bike.IsConnected);
             StopCommand = new RelayCommand(() => bike.StopWorkout().FireAndForget(RaiseErrorEvent), () => bike.IsWorkoutRunning);
             bike.Connected += Bike_Connected;
             bike.Disconnected += Bike_Disconnected;
@@ -192,7 +192,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private async void Bike_Connected(object sender, EventArgs e)
+        private async void Bike_Connected(object? sender, EventArgs e)
         {
             StatusChanged?.Invoke(this, EventArgs.Empty);
             StatusText = "Starting Workout...";
@@ -205,7 +205,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void Bike_Disconnected(object sender, EventArgs e)
+        private void Bike_Disconnected(object? sender, EventArgs e)
         {
             StatusText = "Waiting for connection...";
             RunOnUIThread(CommandManager.InvalidateRequerySuggested);
@@ -216,7 +216,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void Bike_WorkoutStarted(object sender, EventArgs e)
+        private void Bike_WorkoutStarted(object? sender, EventArgs e)
         {
             RunOnUIThread(CommandManager.InvalidateRequerySuggested);
         }
@@ -226,7 +226,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void Bike_WorkoutEnded(object sender, EventArgs e)
+        private void Bike_WorkoutEnded(object? sender, EventArgs e)
         {
             StatusText = "Workout Ended";
             IsPaused = false;
@@ -265,7 +265,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="BikeWorkoutEventArgs"/> instance containing the event data.</param>
-        private void Bike_WorkoutUpdate(object sender, BikeWorkoutEventArgs e)
+        private void Bike_WorkoutUpdate(object? sender, BikeWorkoutEventArgs e)
         {
             // Determine if the workout is paused
             IsPaused = e.Data.RotationsPerMinute == 0;
@@ -298,7 +298,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>
-        private async void PausedTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private async void PausedTimer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             // If paused for too long just stop the workout
             await bike.StopWorkout();
@@ -309,7 +309,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>
-        private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void DailyTimer_Elapsed(object? sender, ElapsedEventArgs? e)
         {
             todayDistanceKms = Convert.ToDecimal(context.Workouts.Where(w => w.StartDateTime.Date == DateTime.Today).Sum(w => w.DistanceKms));
             OnPropertyChanged(nameof(SummaryText));
@@ -320,7 +320,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="ExceptionEventArgs"/> instance containing the event data.</param>
-        private void Bike_Error(object sender, ExceptionEventArgs e)
+        private void Bike_Error(object? sender, ExceptionEventArgs e)
         {
             Error?.Invoke(this, e);
         }
@@ -368,6 +368,7 @@ namespace UnderDeskBike.ViewModels
         /// </summary>
         private void SaveWorkoutData()
         {
+            if (currentWorkout == null) return;
             currentWorkout.EndDateTime = DateTime.Now;
             context.SaveChanges();
         }

@@ -10,6 +10,7 @@
     <Copyright>Copyright (c) 2021 Wayne Venables</Copyright>
     <AnalysisLevel>latest</AnalysisLevel>
     <ApplicationIcon>Resources\trayicon.ico</ApplicationIcon>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

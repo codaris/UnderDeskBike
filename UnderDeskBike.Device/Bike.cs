@@ -45,59 +45,59 @@ namespace UnderDeskBike
         /// <summary>
         /// Occurs when connected.
         /// </summary>
-        public event EventHandler Connected;
+        public event EventHandler? Connected;
 
         /// <summary>
         /// Occurs when disconnected.
         /// </summary>
-        public event EventHandler Disconnected;
+        public event EventHandler? Disconnected;
 
         /// <summary>
         /// Occurs when workout update occurs.
         /// </summary>
-        public event EventHandler<BikeWorkoutEventArgs> WorkoutUpdate;
+        public event EventHandler<BikeWorkoutEventArgs>? WorkoutUpdate;
 
         /// <summary>
         /// Occurs when start workout.
         /// </summary>
-        public event EventHandler WorkoutStarted;
+        public event EventHandler? WorkoutStarted;
 
         /// <summary>
         /// Occurs when ending workout.
         /// </summary>
-        public event EventHandler WorkoutEnded;
+        public event EventHandler? WorkoutEnded;
 
         /// <summary>
         /// Occurs when a background error is triggered
         /// </summary>
-        public event EventHandler<ExceptionEventArgs> Error;
+        public event EventHandler<ExceptionEventArgs>? Error;
 
         /// <summary>
         /// The bike device.
         /// </summary>
-        private BikeDevice bikeDevice;
+        private readonly BikeDevice bikeDevice;
 
         /// <summary>
         /// The cancellation token source for terminating the feed.
         /// </summary>
-        private CancellationTokenSource workoutCancellationTokenSource = null;
+        private CancellationTokenSource? workoutCancellationTokenSource = null;
 
         /// <summary>
         /// The run task completion source.
         /// </summary>
-        private TaskCompletionSource workoutTaskCompletionSource = null;
+        private TaskCompletionSource? workoutTaskCompletionSource = null;
 
         /// <summary>
         /// The connect task completion source.
         /// </summary>
-        private TaskCompletionSource connectedTaskCompletionSource = null;
+        private TaskCompletionSource? connectedTaskCompletionSource = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Bike"/> class.
         /// </summary>
         /// <param name="errorHandler">The error handler.</param>
         /// <param name="logger">The logger.</param>
-        public Bike(TextWriter logger = null)
+        public Bike(TextWriter? logger = null)
         {
             bikeDevice = new BikeDevice(logger);
             bikeDevice.Connected += BikeDevice_Connected;
@@ -159,7 +159,7 @@ namespace UnderDeskBike
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task StopWorkout()
         {
-            if (!IsWorkoutRunning) return;
+            if (workoutCancellationTokenSource == null) return;
             workoutCancellationTokenSource.Cancel();
             if (workoutTaskCompletionSource == null) return;
             await workoutTaskCompletionSource.Task;
@@ -171,7 +171,7 @@ namespace UnderDeskBike
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public Task WaitForWorkout()
         {
-            if (workoutCancellationTokenSource == null) return Task.CompletedTask;
+            if (workoutTaskCompletionSource == null) return Task.CompletedTask;
             return workoutTaskCompletionSource.Task;
         }
 
@@ -180,7 +180,7 @@ namespace UnderDeskBike
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void BikeDevice_Disconnected(object sender, EventArgs e)
+        private void BikeDevice_Disconnected(object? sender, EventArgs e)
         {
             OnPropertyChanged(nameof(IsConnected));
             connectedTaskCompletionSource?.TrySetCanceled();
@@ -193,7 +193,7 @@ namespace UnderDeskBike
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void BikeDevice_Connected(object sender, EventArgs e)
+        private void BikeDevice_Connected(object? sender, EventArgs e)
         {
             OnPropertyChanged(nameof(IsConnected));
             connectedTaskCompletionSource?.TrySetResult();
@@ -248,9 +248,9 @@ namespace UnderDeskBike
             }
             finally
             {
-                workoutCancellationTokenSource.Dispose();
+                workoutCancellationTokenSource?.Dispose();
                 workoutCancellationTokenSource = null;
-                workoutTaskCompletionSource.TrySetResult();
+                workoutTaskCompletionSource?.TrySetResult();
                 workoutTaskCompletionSource = null;
                 OnPropertyChanged(nameof(IsWorkoutRunning));
                 WorkoutEnded?.Invoke(this, EventArgs.Empty);
@@ -273,7 +273,6 @@ namespace UnderDeskBike
                 if (disposing)
                 {
                     bikeDevice?.Dispose();
-                    bikeDevice = null;
                 }
                 disposedValue = true;
             }

@@ -18,34 +18,26 @@ namespace UnderDeskBike
     /// workout data.
     /// </summary>
     /// <seealso cref="UnderDeskBike.BikeCommand{bool}" />
-    internal class BikeWorkoutCommand : BikeCommand<BikeWorkoutData>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="BikeWorkoutCommand"/> class.
+    /// </remarks>
+    /// <param name="start">if set to <c>true</c> to start.</param>
+    internal class BikeWorkoutCommand(bool start) : BikeCommand<BikeWorkoutData>
     {
         /// <summary>The start packet.</summary>
-        private static readonly byte[] StartPacket = new byte[] { 0xf9, 0xd5, 0x0d, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdc };
+        private static readonly byte[] StartPacket = [0xf9, 0xd5, 0x0d, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdc];
 
         /// <summary>The continue packet.</summary>
-        private static readonly byte[] ContinuePacket = new byte[] { 0xf9, 0xd5, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdb };
-
-        /// <summary>Sending start packet.</summary>
-        private readonly bool start = false;
+        private static readonly byte[] ContinuePacket = [0xf9, 0xd5, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdb];
 
         /// <summary>The first result packet.</summary>
-        private byte[] packet1 = null;
+        private byte[]? packet1 = null;
 
         /// <summary>The second result packet.</summary>
-        private byte[] packet2 = null;
+        private byte[]? packet2 = null;
 
         /// <summary>The third result packet.</summary>
-        private byte[] packet3 = null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BikeWorkoutCommand"/> class.
-        /// </summary>
-        /// <param name="start">if set to <c>true</c> to start.</param>
-        public BikeWorkoutCommand(bool start)
-        {
-            this.start = start;
-        }
+        private byte[]? packet3 = null;
 
         /// <summary>
         /// Sends this command using the specified send function.

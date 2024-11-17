@@ -33,7 +33,7 @@ namespace Codaris.Wpf
         /// <param name="action">The action.</param>
         public static void RunOnUIThread(Action action)
         {
-            Contract.Requires(action != null);
+            Assert.IsNotNull(action); 
             if (Application.Current?.Dispatcher?.CheckAccess() ?? true) action();
             else Application.Current.Dispatcher.Invoke(action);
         }
@@ -45,7 +45,7 @@ namespace Codaris.Wpf
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public static async Task RunOnUIThreadAsync(Action action)
         {
-            Contract.Requires(action != null);
+            Assert.IsNotNull(action);
             if (Application.Current?.Dispatcher?.CheckAccess() ?? true) action();
             else await Application.Current.Dispatcher.InvokeAsync(action);
         }
@@ -58,7 +58,7 @@ namespace Codaris.Wpf
         /// <param name="localProperties">The local properties.</param>
         internal protected void PropagatePropertyChanged(INotifyPropertyChanged instance, string instancePropertyName, params string[] localProperties)
         {
-            Contract.Requires(instance != null);
+            Assert.IsNotNull(instance);
             var instanceProperties = propagatedProperties.GetOrCreateValue(instance);
             if (!instanceProperties.TryGetValue(instancePropertyName, out var thisProperties))
             {
@@ -76,10 +76,10 @@ namespace Codaris.Wpf
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
-        private void PropagatePropertyChangeEventHandler(object sender, PropertyChangedEventArgs e)
+        private void PropagatePropertyChangeEventHandler(object? sender, PropertyChangedEventArgs e)
         {
-            if (!propagatedProperties.TryGetValue((INotifyPropertyChanged)sender, out var fields)) return;
-            if (!fields.TryGetValue(e.PropertyName, out var value)) return;
+            if (!propagatedProperties.TryGetValue((INotifyPropertyChanged)sender!, out var fields)) return;
+            if (e.PropertyName == null || !fields.TryGetValue(e.PropertyName, out var value)) return;
             foreach (var propertyName in value) OnPropertyChanged(propertyName);
         }
     }

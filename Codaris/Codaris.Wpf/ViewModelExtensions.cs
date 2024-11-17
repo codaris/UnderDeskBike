@@ -11,6 +11,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
+using Codaris.Common;
+
 namespace Codaris.Wpf
 {
     /// <summary>
@@ -27,15 +29,16 @@ namespace Codaris.Wpf
         /// <param name="source">The source.</param>
         /// <param name="propertyLambda">The property lambda.</param>
         /// <param name="localPropertyLambdas">The local property lambdas.</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0305:Simplify collection initialization", Justification = "Unnecessary")]
         public static void PropagatePropertyChanged<TSource, TDestination>(this TDestination destination, TSource source, Expression<Func<TSource, object>> propertyLambda, params Expression<Func<TDestination, object>>[] localPropertyLambdas)
             where TDestination : BaseViewModel
             where TSource : INotifyPropertyChanged
         {
-            Contract.Requires(propertyLambda != null);
-            Contract.Requires(destination != null);
+            Assert.IsNotNull(propertyLambda);
+            Assert.IsNotNull(destination);
 
-            string propertyName = propertyLambda.GetMemberName();
-            List<string> localProperties = new List<string>();
+            var propertyName = propertyLambda.GetMemberName();
+            List<string> localProperties = [];
             foreach (var localPropertyLambda in localPropertyLambdas)
             {
                 localProperties.Add(localPropertyLambda.GetMemberName());
@@ -49,9 +52,9 @@ namespace Codaris.Wpf
         /// <param name="source">The source.</param>
         /// <param name="propertyChangedHandler">The property changed handler.</param>
         /// <param name="propertyNames">The property names.</param>
-        public static void HandlePropertyChanged(this INotifyPropertyChanged source, Action<string> propertyChangedHandler, params string[] propertyNames)
+        public static void HandlePropertyChanged(this INotifyPropertyChanged source, Action<string?> propertyChangedHandler, params string[] propertyNames)
         {
-            Contract.Requires(source != null);
+            Assert.IsNotNull(source);
             source.PropertyChanged += (sender, e) =>
             {
                 if (propertyNames.Contains(e.PropertyName)) propertyChangedHandler(e.PropertyName);
@@ -65,7 +68,7 @@ namespace Codaris.Wpf
         /// <param name="source">The source.</param>
         /// <param name="propertyChangedHandler">The property changed handler.</param>
         /// <param name="propertyLambdas">The property lambdas.</param>
-        public static void HandlePropertyChanged<T>(this T source, Action<string> propertyChangedHandler, params Expression<Func<T, object>>[] propertyLambdas)
+        public static void HandlePropertyChanged<T>(this T source, Action<string?> propertyChangedHandler, params Expression<Func<T, object>>[] propertyLambdas)
             where T : INotifyPropertyChanged
         {
             source.HandlePropertyChanged(propertyChangedHandler, propertyLambdas.Select(p => p.GetMemberName()).ToArray());
@@ -78,7 +81,7 @@ namespace Codaris.Wpf
         /// <returns>The member name from the Lambda expression.</returns>
         private static string GetMemberName(this LambdaExpression memberSelector)
         {
-            static string NameSelector(Expression e)
+            static string? NameSelector(Expression e)
             {
                 return e.NodeType switch
                 {
@@ -92,7 +95,7 @@ namespace Codaris.Wpf
                 };
             }
 
-            return NameSelector(memberSelector.Body);
+            return Assert.IsNotNull(NameSelector(memberSelector.Body));
         }
     }
 }

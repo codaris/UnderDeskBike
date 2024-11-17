@@ -21,18 +21,18 @@ namespace UnderDeskBike
     internal class BikeInfo1Command : BikeCommand<ValueTuple<int, int>>
     {
         /// <summary>The information packet.</summary>
-        private static readonly byte[] InfoPacket = new byte[] { 0xf9, 0xd3, 0x0d, 0x01, 0x00, 0x00, 0x2c, 0x00, 0x00, 0x3c, 0x00, 0xa0, 0x00, 0x00, 0x00, 0x00, 0xe2 };
+        private static readonly byte[] InfoPacket = [0xf9, 0xd3, 0x0d, 0x01, 0x00, 0x00, 0x2c, 0x00, 0x00, 0x3c, 0x00, 0xa0, 0x00, 0x00, 0x00, 0x00, 0xe2];
 
         /// <summary>
         /// The first result packet.
         /// </summary>
-        private byte[] packet1 = null;
+        private byte[]? packet1 = null;
 
         /// <summary>
         /// The second result packet.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0052:Remove unread private members", Justification = "Not interpeting this data.")]
-        private byte[] packet2 = null;
+        private byte[]? packet2 = null;
 
         /// <summary>
         /// Sends this command using the specified send function.

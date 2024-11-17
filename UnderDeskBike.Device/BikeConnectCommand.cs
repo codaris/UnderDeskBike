@@ -24,12 +24,12 @@ namespace UnderDeskBike
         /// <summary>
         /// The connect packet.
         /// </summary>
-        private static readonly byte[] ConnectPacket = new byte[] { 0xf9, 0xd0, 0x00, 0xc9 };
+        private static readonly byte[] ConnectPacket = [0xf9, 0xd0, 0x00, 0xc9];
 
         /// <summary>
         /// The result packet.
         /// </summary>
-        private static readonly byte[] ResultPacket = new byte[] { 0xf9, 0xe0, 0x00, 0xd9 };
+        private static readonly byte[] ResultPacket = [0xf9, 0xe0, 0x00, 0xd9];
 
         /// <summary>
         /// Sends this command using the specified send function.

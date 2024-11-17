@@ -67,6 +67,6 @@ namespace UnderDeskBike.Models
         /// Gets or sets the workout.
         /// </summary>
         [ForeignKey(nameof(WorkoutId))]
-        public virtual Workout Workout { get; set; }
+        public virtual Workout Workout { get; set; } = null!;
     }
 }

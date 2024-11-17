@@ -12,6 +12,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Codaris.Common;
+
 using Microsoft.Win32;
 
 namespace UnderDeskBike
@@ -53,13 +55,16 @@ namespace UnderDeskBike
         public static void SetRunAtStartup(bool value)
         {
             using var startupKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            Assert.IsNotNull(startupKey);
             if (!value)
             {
                 if (startupKey.GetValue(Name) == null) return;
                 startupKey.DeleteValue(Name);
                 return;
             }
-            startupKey.SetValue(Name, Process.GetCurrentProcess().MainModule.FileName);
+            var mainModule = Process.GetCurrentProcess().MainModule;
+            if (mainModule == null) return; 
+            startupKey.SetValue(Name, mainModule.FileName);
         }
 
         /// <summary>
@@ -69,7 +74,10 @@ namespace UnderDeskBike
         public static bool GetRunAtStartup()
         {
             using var startupKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            return (string)startupKey.GetValue(Name) == Process.GetCurrentProcess().MainModule.FileName;
+            if (startupKey == null) return false;
+            var mainModule = Process.GetCurrentProcess().MainModule;
+            if (mainModule == null) return false;   
+            return (string?)startupKey.GetValue(Name) == mainModule.FileName;
         }
     }
 }

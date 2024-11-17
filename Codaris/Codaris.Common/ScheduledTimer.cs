@@ -26,7 +26,7 @@ namespace Codaris.Common
         /// <summary>
         /// Occurs when timer has elapsed.
         /// </summary>
-        public event ElapsedEventHandler Elapsed;
+        public event ElapsedEventHandler? Elapsed;
 
         /// <summary>The disposed value.</summary>
         private bool disposedValue;
@@ -49,7 +49,7 @@ namespace Codaris.Common
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             Elapsed?.Invoke(this, e);
             if (AutoReset)

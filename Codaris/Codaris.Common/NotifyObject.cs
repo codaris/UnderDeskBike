@@ -21,7 +21,7 @@ namespace Codaris.Common
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Sets the property value and raises the changed event.
@@ -34,12 +34,12 @@ namespace Codaris.Common
         /// <returns>
         /// True if property was changed.
         /// </returns>
-        protected bool SetProperty<T>(ref T field, T value, Action<T> onChanged = null, [CallerMemberName] string name = null)
+        protected bool SetProperty<T>(ref T field, T value, Action<T>? onChanged = null, [CallerMemberName] string name = null!)
         {
             if (EqualityComparer<T>.Default.Equals(field, value)) return false;
             field = value;
             onChanged?.Invoke(value);
-            OnPropertyChanged(name);
+            this.OnPropertyChanged(name);
             return true;
         }
 
@@ -47,7 +47,7 @@ namespace Codaris.Common
         /// Called when the property changed.
         /// </summary>
         /// <param name="name">The property name.</param>
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        protected void OnPropertyChanged([CallerMemberName] string name = null!)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }

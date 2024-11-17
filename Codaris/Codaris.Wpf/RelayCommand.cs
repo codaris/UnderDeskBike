@@ -17,13 +17,15 @@ namespace Codaris.Wpf
     /// </summary>
     /// <typeparam name="T">The return type.</typeparam>
     /// <seealso cref="System.Windows.Input.ICommand" />
-    public class RelayCommand<T> : ICommand
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="RelayCommand{T}"/> class.
+    /// </remarks>
+    /// <param name="execute">The execute.</param>
+    /// <param name="canExecute">The can execute.</param>
+    public class RelayCommand<T>(Action<T> execute, Predicate<T>? canExecute) : ICommand
     {
         /// <summary>The execute action.</summary>
-        private readonly Action<T> _execute;
-
-         /// <summary>Whether the execute can be actioned.</summary>
-        private readonly Predicate<T> _canExecute;
+        private readonly Action<T> _execute = execute ?? throw new ArgumentNullException(nameof(execute));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RelayCommand{T}"/> class.
@@ -34,17 +36,6 @@ namespace Codaris.Wpf
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelayCommand{T}"/> class.
-        /// </summary>
-        /// <param name="execute">The execute.</param>
-        /// <param name="canExecute">The can execute.</param>
-        public RelayCommand(Action<T> execute, Predicate<T> canExecute)
-        {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
-        }
-
-        /// <summary>
         /// Defines the method that determines whether the command can execute in its current state.
         /// </summary>
         /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to <see langword="null" />.</param>
@@ -52,27 +43,27 @@ namespace Codaris.Wpf
         ///   <see langword="true" /> if this command can be executed; otherwise, <see langword="false" />.
         /// </returns>
         [DebuggerStepThrough]
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
-            return _canExecute == null || _canExecute((T)parameter);
+            return canExecute == null || canExecute((T)parameter!);
         }
 
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         /// <summary>
         /// Defines the method to be called when the command is invoked.
         /// </summary>
         /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to <see langword="null" />.</param>
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
-            _execute((T)parameter);
+            _execute((T)parameter!);
         }
     }
 
@@ -80,13 +71,15 @@ namespace Codaris.Wpf
     /// Relay command.
     /// </summary>
     /// <seealso cref="System.Windows.Input.ICommand" />
-    public class RelayCommand : ICommand
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="RelayCommand"/> class.
+    /// </remarks>
+    /// <param name="execute">The execute.</param>
+    /// <param name="canExecute">The can execute.</param>
+    public class RelayCommand(Action execute, Func<bool>? canExecute) : ICommand
     {
         /// <summary>The execute action.</summary>
-        private readonly Action _execute;
-
-        /// <summary>Whether the execute can be actioned.</summary>
-        private readonly Func<bool> _canExecute;
+        private readonly Action _execute = execute ?? throw new ArgumentNullException(nameof(execute));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RelayCommand"/> class.
@@ -97,17 +90,6 @@ namespace Codaris.Wpf
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelayCommand"/> class.
-        /// </summary>
-        /// <param name="execute">The execute.</param>
-        /// <param name="canExecute">The can execute.</param>
-        public RelayCommand(Action execute, Func<bool> canExecute)
-        {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
-        }
-
-        /// <summary>
         /// Defines the method that determines whether the command can execute in its current state.
         /// </summary>
         /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to <see langword="null" />.</param>
@@ -115,25 +97,25 @@ namespace Codaris.Wpf
         ///   <see langword="true" /> if this command can be executed; otherwise, <see langword="false" />.
         /// </returns>
         [DebuggerStepThrough]
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
-            return _canExecute == null || _canExecute();
+            return canExecute == null || canExecute();
         }
 
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         /// <summary>
         /// Defines the method to be called when the command is invoked.
         /// </summary>
         /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to <see langword="null" />.</param>
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
             _execute();
         }

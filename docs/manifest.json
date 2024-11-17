@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.Bike.html",
-          "hash": "zJHB05ScQF8j9tYkUDO6jECaI4MrzIzX/NQW73bAroM="
+          "hash": "gElgvAdJiK/sEd2AQwrNDadDPvgz3doryM+OzKY8rKA="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/UnderDeskBike.BikeWorkoutData.html",
-          "hash": "VT4CgMy06LkgGsJg8E9RDsB3BIRmqD4QWXdQSPXkbOs="
+          "hash": "48AHwmoP488t04TdLOE7n0xeiBWDUcuFXkRovvv1GHg="
         }
       },
       "is_incremental": false,
@@ -269,23 +269,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 2,
-          "skipped_file_count": 2
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 15,
-          "skipped_file_count": 12
+          "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

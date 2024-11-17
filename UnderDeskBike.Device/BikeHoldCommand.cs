@@ -21,17 +21,17 @@ namespace UnderDeskBike
     internal class BikeHoldCommand : BikeCommand<byte[]>
     {
         /// <summary>The hold packet.</summary>
-        private static readonly byte[] HoldPacket = new byte[] { 0xf9, 0xd1, 0x05, 0x02, 0x00, 0x00, 0x00, 0x00, 0xd1 };
+        private static readonly byte[] HoldPacket = [0xf9, 0xd1, 0x05, 0x02, 0x00, 0x00, 0x00, 0x00, 0xd1];
 
         /// <summary>
         /// The first result packet.
         /// </summary>
-        private byte[] packet1 = null;
+        private byte[]? packet1 = null;
 
         /// <summary>
         /// The second result packet.
         /// </summary>
-        private byte[] packet2 = null;
+        private byte[]? packet2 = null;
 
         /// <summary>
         /// Sends this command using the specified send function.

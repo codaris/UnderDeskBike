@@ -76,7 +76,7 @@ namespace UnderDeskBike
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="BikeWorkoutEventArgs"/> instance containing the event data.</param>
-        private static void Bike_WorkoutUpdate(object sender, BikeWorkoutEventArgs e)
+        private static void Bike_WorkoutUpdate(object? sender, BikeWorkoutEventArgs e)
         {
             Console.Write($"{e.Data.DistanceKms:n2} kms".PadLeft(10));
             Console.Write($"{e.Data.RotationsPerMinute:n0} RPM".PadLeft(10));
@@ -91,7 +91,7 @@ namespace UnderDeskBike
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private static void Bike_Disconnected(object sender, EventArgs e)
+        private static void Bike_Disconnected(object? sender, EventArgs e)
         {
             Console.WriteLine("Bike Disconnected.");
         }
@@ -101,7 +101,7 @@ namespace UnderDeskBike
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private static void Bike_Connected(object sender, EventArgs e)
+        private static void Bike_Connected(object? sender, EventArgs e)
         {
             Console.WriteLine("Bike Connected.");
         }

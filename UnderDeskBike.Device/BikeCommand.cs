@@ -52,18 +52,12 @@ namespace UnderDeskBike
         /// Sets the result.
         /// </summary>
         /// <param name="result">The result value.</param>
-        protected void SetResult(T result)
-        {
-            resultCompletionSource.TrySetResult(result);
-        }
+        protected void SetResult(T result) => resultCompletionSource.TrySetResult(result);
 
         /// <summary>
         /// Sets the result as exception.
         /// </summary>
         /// <param name="exception">The exception.</param>
-        protected void SetException(Exception exception)
-        {
-            resultCompletionSource.TrySetException(exception);
-        }
+        protected void SetException(Exception exception) => resultCompletionSource.TrySetException(exception);
     }
 }

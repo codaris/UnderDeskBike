@@ -35,7 +35,7 @@ namespace Codaris.Common
             var aggregateExcepton = (exception as AggregateException)?.Flatten();
             if (aggregateExcepton != null && aggregateExcepton.InnerExceptions.Count == 1)
             {
-                Exception = aggregateExcepton.InnerException;
+                Exception = aggregateExcepton.InnerException!;
             }
             else
             {

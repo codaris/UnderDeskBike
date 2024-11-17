@@ -23,7 +23,11 @@ namespace UnderDeskBike
     /// The low-level interface to the bike bluetooth device.
     /// </summary>
     /// <seealso cref="System.IDisposable" />
-    internal class BikeDevice : IDisposable
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="BikeDevice"/> class.
+    /// </remarks>
+    /// <param name="logger">The logger.</param>
+    internal class BikeDevice(TextWriter? logger) : IDisposable
     {
         /// <summary>
         /// The service UUID.
@@ -43,7 +47,7 @@ namespace UnderDeskBike
         /// <summary>
         /// The disconnect packet.
         /// </summary>
-        private static readonly byte[] DisconnectPacket = new byte[] { 65, 84, 58, 57, 57, 57, 57, 57, 57 };  // AT:999999
+        private static readonly byte[] DisconnectPacket = [65, 84, 58, 57, 57, 57, 57, 57, 57];  // AT:999999
 
         /// <summary>
         /// Gets a value indicating whether this instance is listening.
@@ -58,61 +62,47 @@ namespace UnderDeskBike
         /// <summary>
         /// Occurs when connected.
         /// </summary>
-        public event EventHandler Connected;
+        public event EventHandler? Connected;
 
         /// <summary>
         /// Occurs when disconnected.
         /// </summary>
-        public event EventHandler Disconnected;
+        public event EventHandler? Disconnected;
 
         /// <summary>
         /// The bluetooth LE device.
         /// </summary>
-        private BluetoothLEDevice device = null;
+        private BluetoothLEDevice? device = null;
 
         /// <summary>
         /// The gatt session.
         /// </summary>
-        private GattSession gattSession = null;
+        private GattSession? gattSession = null;
 
         /// <summary>
         /// The device service.
         /// </summary>
-        private GattDeviceService deviceService = null;
+        private GattDeviceService? deviceService = null;
 
         /// <summary>
         /// The read characteristic.
         /// </summary>
-        private GattCharacteristic readCharacteristic = null;
+        private GattCharacteristic? readCharacteristic = null;
 
         /// <summary>
         /// The write characteristic.
         /// </summary>
-        private GattCharacteristic writeCharacteristic = null;
-
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private readonly TextWriter logger = null;
+        private GattCharacteristic? writeCharacteristic = null;
 
         /// <summary>
         /// The current command.
         /// </summary>
-        private BikeCommand currentCommand = null;
+        private BikeCommand? currentCommand = null;
 
         /// <summary>
         /// The cancellation token source.
         /// </summary>
-        private CancellationTokenSource commandCancellationTokenSource = null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BikeDevice"/> class.
-        /// </summary>
-        /// <param name="logger">The logger.</param>
-        public BikeDevice(TextWriter logger)
-        {
-            this.logger = logger;
-        }
+        private CancellationTokenSource? commandCancellationTokenSource = null;
 
         /// <summary>
         /// Listen for a connection.
@@ -126,8 +116,7 @@ namespace UnderDeskBike
                 if (IsListening) return;
 
                 // Create device
-                var deviceInfo = await GetBluetoothDeviceInfo();
-                if (deviceInfo == null) throw new Exception("Under desk bluetooth device not found");
+                var deviceInfo = await GetBluetoothDeviceInfo() ?? throw new Exception("Under desk bluetooth device not found");
                 device = await BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
                 device.ConnectionStatusChanged += Device_ConnectionStatusChanged;
 
@@ -209,6 +198,7 @@ namespace UnderDeskBike
         /// </summary>
         private async Task OnConnect()
         {
+            if (device == null) throw new InvalidOperationException("Connection failed, Bluetooth device not found.");
             deviceService = device.GetGattService(Guid.Parse(UuidService));
             readCharacteristic = await GetCharacteristic(deviceService, Guid.Parse(UuidRead));
             writeCharacteristic = await GetCharacteristic(deviceService, Guid.Parse(UuidWrite));
@@ -233,7 +223,7 @@ namespace UnderDeskBike
         /// Gets the bike device.
         /// </summary>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-        private static async Task<DeviceInformation> GetBluetoothDeviceInfo()
+        private static async Task<DeviceInformation?> GetBluetoothDeviceInfo()
         {
             var devices = await DeviceInformation.FindAllAsync(BluetoothLEDevice.GetDeviceSelector());
             foreach (var device in devices) if (device.Name == "MCF-0000000000") return device;
@@ -264,7 +254,8 @@ namespace UnderDeskBike
             logger?.WriteLine("SEND: " + string.Join(" ", data.Select(v => v.ToString("X2"))));
             using var writer = new DataWriter();
             writer.WriteBytes(data);
-            return await writeCharacteristic.WriteValueAsync(writer.DetachBuffer()).AsTask(commandCancellationTokenSource.Token).ConfigureAwait(false);
+            if (writeCharacteristic == null) throw new InvalidOperationException("Unable to write command");
+            return await writeCharacteristic.WriteValueAsync(writer.DetachBuffer()).AsTask(commandCancellationTokenSource?.Token ?? default).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -316,7 +307,6 @@ namespace UnderDeskBike
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:Elements should be ordered by access", Justification = "Dispose appears at end of class")]
         public void Dispose()
         {
             Dispose(disposing: true);
